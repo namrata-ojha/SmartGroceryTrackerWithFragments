@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.scu.smartgrocerytracker.R;
 
+import org.apache.commons.lang3.time.DateFormatUtils;
+
 import java.util.List;
 
 
@@ -40,11 +42,8 @@ public class PantryListingAdapter extends ArrayAdapter<PantryItem> {
         TextView quantityTextView = (TextView) row.findViewById(R.id.quantityTextView);
         quantityTextView.setText("("+pantryItem.getTotalQuantity()+""+pantryItem.getUnit()+")");
 
-
         TextView expDateTextView = (TextView) row.findViewById(R.id.expDateTextView);
-        expDateTextView.setText("02/24/16");
-
-
+        expDateTextView.setText(pantryItem.getExpiryDateString());
 
         return row;
     }

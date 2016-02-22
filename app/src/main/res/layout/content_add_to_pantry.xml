@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,123 +8,134 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".pantry.AddToPantryActivity"
     tools:showIn="@layout/activity_add_to_pantry">
 
 
     <TextView
+        android:layout_width="60dp"
+        android:layout_height="20dp"
         android:id="@+id/itemNameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:textSize="@dimen/abc_text_size_headline_material"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="41dp"
-        android:layout_toEndOf="@+id/categoryTextView"
-        android:layout_toRightOf="@+id/categoryTextView" />
+        android:layout_alignLeft="@+id/unitSpinner"
+        android:layout_alignStart="@+id/unitSpinner" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dip"
+        android:background="#858e85"
+        android:layout_above="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
-        android:id="@+id/quantityTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/textView"
-        android:layout_alignRight="@+id/textView"
-        android:layout_below="@+id/textView"
+        android:text="Quantity"
+        android:id="@+id/quantityTextView"
         android:layout_marginTop="51dp"
-        android:text="Quantity" />
+        android:layout_below="@+id/textView"
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView" />
 
     <EditText
-        android:id="@+id/editText"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:inputType="number"
         android:layout_alignBottom="@+id/quantityTextView"
-        android:layout_marginLeft="29dp"
-        android:layout_marginStart="29dp"
-        android:layout_toRightOf="@+id/quantityTextView"
-        android:inputType="number" />
+        android:layout_alignLeft="@+id/priceEditText"
+        android:layout_alignStart="@+id/priceEditText" />
 
     <Spinner
-        android:id="@+id/unitSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/unitSpinner"
+        android:spinnerMode="dropdown"
         android:layout_alignTop="@+id/editText"
-        android:layout_marginLeft="36dp"
-        android:layout_marginStart="36dp"
-        android:layout_toEndOf="@+id/editText"
-        android:layout_toRightOf="@+id/editText"
-        android:spinnerMode="dropdown" />
+        android:layout_alignRight="@+id/savebutton"
+        android:layout_alignEnd="@+id/savebutton"
+        android:layout_alignLeft="@+id/savebutton"
+        android:layout_alignStart="@+id/savebutton" />
 
     <TextView
-        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Category"
+        android:id="@+id/textView"
+        android:layout_below="@+id/itemNameTextView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/itemNameTextView"
-        android:layout_marginTop="30dp"
-        android:text="Category" />
+        android:layout_marginTop="29dp" />
 
     <TextView
-        android:id="@+id/categoryTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/categoryTextView"
         android:layout_above="@+id/quantityTextView"
         android:layout_alignLeft="@+id/editText"
-        android:layout_alignStart="@+id/editText" />
-
-    <TextView
-        android:id="@+id/priceTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/expiryTextView"
-        android:layout_alignStart="@+id/expiryTextView"
-        android:layout_below="@+id/unitSpinner"
-        android:layout_marginTop="40dp"
-        android:text="Price($)" />
-
-    <EditText
-        android:id="@+id/priceEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/expiryTextView"
-        android:layout_alignLeft="@+id/editText"
         android:layout_alignStart="@+id/editText"
-        android:text="0.00" />
+        android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/expiryTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2"
-        android:layout_below="@+id/priceTextView"
-        android:layout_marginTop="101dp"
-        android:text="Expiry date" />
+        android:text="Price($)"
+        android:id="@+id/priceTextView"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/unitSpinner"
+        android:layout_alignLeft="@+id/expiryTextView"
+        android:layout_alignStart="@+id/expiryTextView" />
 
     <EditText
-        android:id="@+id/expiryEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/expiryTextView"
-        android:layout_toRightOf="@+id/categoryTextView"
+        android:id="@+id/priceEditText"
+        android:text="0.00"
+        android:textStyle="bold"
+        android:layout_above="@+id/expiryTextView"
+        android:layout_toRightOf="@+id/expiryTextView"
+        android:layout_toEndOf="@+id/expiryTextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Expiry date"
+        android:id="@+id/expiryTextView"
+        android:layout_marginTop="59dp"
+        android:layout_below="@+id/priceTextView"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="date"
         android:ems="10"
-        android:inputType="date" />
+        android:id="@+id/expiryEditText"
+        android:textStyle="bold"
+        android:layout_above="@+id/textView2"
+        android:layout_toRightOf="@+id/textView2"
+        android:layout_toEndOf="@+id/textView2" />
 
     <Button
-        android:id="@+id/savebutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/expiryEditText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="68dp"
-        android:text="Save" />
+        android:text="Save"
+        android:id="@+id/savebutton"
+        android:layout_marginTop="29dp"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true" />
 
     <TextView
-        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="(mm/dd/yy)"
+        android:id="@+id/textView2"
         android:layout_below="@+id/expiryTextView"
-        android:layout_toLeftOf="@+id/expiryEditText"
-        android:layout_toStartOf="@+id/expiryEditText"
-        android:text="(mm/dd/yy)" />
+        android:layout_alignLeft="@+id/quantityTextView"
+        android:layout_alignStart="@+id/quantityTextView" />
 
 </RelativeLayout>

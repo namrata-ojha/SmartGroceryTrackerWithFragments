@@ -2,6 +2,8 @@ package com.scu.smartgrocerytracker.pantry;
 
 import com.scu.smartgrocerytracker.constants.Unit;
 
+import org.apache.commons.lang3.time.DateFormatUtils;
+
 import java.util.Date;
 
 /**
@@ -17,7 +19,8 @@ public class PantryItem {
     private double quantityUsed;
     //Holds one serving(e.g 1 serving of MILK = 250ml cup)
     private Serving serving;
-    private Date expiryDate;
+    //Expiry date in milliseconds
+    private long expiryDate;
 
 
     public int getItemId() {
@@ -28,11 +31,11 @@ public class PantryItem {
         this.itemId = itemId;
     }
 
-    public Date getExpiryDate() {
+    public long getExpiryDate() {
         return expiryDate;
     }
 
-    public void setExpiryDate(Date expiryDate) {
+    public void setExpiryDate(long expiryDate) {
         this.expiryDate = expiryDate;
     }
 
@@ -92,6 +95,10 @@ public class PantryItem {
         this.quantityUsed = quantityUsed;
     }
 
+    public String getExpiryDateString() {
+        return DateFormatUtils.format(expiryDate,"mm/dd/yy");
+    }
+
     @Override
     public String toString() {
         return "PantryItem{" +
@@ -100,7 +107,7 @@ public class PantryItem {
                 ", price=" + price +
                 ", totalQuantity=" + totalQuantity +
                 ", unit=" + unit +
-                ", expiryDate=" + expiryDate +
+                ", expiryDate=" + getExpiryDateString() +
                 '}';
     }
 }

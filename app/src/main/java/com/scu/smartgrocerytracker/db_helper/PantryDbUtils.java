@@ -36,7 +36,7 @@ public class PantryDbUtils {
                     "  %s integer," +
                     "  %s integer," +
                     "  %s text," +
-                    "  %s date," +
+                    "  %s integer," +
                     "  %s integer," +
                     "  %s integer," +
                     "  %s integer," +
@@ -70,7 +70,7 @@ public class PantryDbUtils {
         newValues.put(PRICE_COLUMN, item.getPrice());
         newValues.put(TOTAL_QUANTITY_COLUMN,item.getTotalQuantity());
         newValues.put(UNIT_COLUMN, item.getUnit().toString());
-        newValues.put(EXPIRY_DATE_COLUMN, item.getExpiryDate().toString());
+        newValues.put(EXPIRY_DATE_COLUMN, item.getExpiryDate());
         newValues.put(QUANTITY_USED_COLUMN, item.getQuantityUsed());
       /*  newValues.put(SERVING_QUANTITY_COLUMN, item.getServing().getQuantity());
         newValues.put(SERVING_UNIT_COLUMN, item.getServing().getUnit().toString());

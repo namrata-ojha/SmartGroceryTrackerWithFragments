@@ -16,6 +16,8 @@ import com.scu.smartgrocerytracker.constants.Constants;
 import com.scu.smartgrocerytracker.constants.Unit;
 import com.scu.smartgrocerytracker.items.Items;
 
+import org.apache.commons.lang3.time.DateFormatUtils;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -87,7 +89,7 @@ public class AddToPantryActivity extends AppCompatActivity {
                 Date expiryDate = null;
                 try {
                     expiryDate = dateFormat.parse((((EditText) findViewById(R.id.expiryEditText)).getText().toString()));
-                    pantryItem.setExpiryDate(expiryDate);
+                    pantryItem.setExpiryDate(expiryDate.getTime());
                 } catch (ParseException e) {
                     Log.d("AddToPantryActivity", "Error parsing date");
                     e.printStackTrace();

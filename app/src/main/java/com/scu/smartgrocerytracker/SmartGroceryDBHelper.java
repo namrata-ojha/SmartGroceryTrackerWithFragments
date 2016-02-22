@@ -14,6 +14,9 @@ import com.scu.smartgrocerytracker.db_helper.PantryDbUtils;
 import com.scu.smartgrocerytracker.pantry.PantryItem;
 import com.scu.smartgrocerytracker.items.Items;
 
+import org.apache.commons.lang3.time.DateFormatUtils;
+import org.apache.commons.lang3.time.DateUtils;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -388,7 +391,7 @@ public class SmartGroceryDBHelper extends SQLiteOpenHelper {
             String categoryName = cursor.getString(2);
             double itemPrice = cursor.getDouble(3);
             String unit = cursor.getString(4);
-            String expDate = cursor.getString(5);
+            long expDate = cursor.getLong(5);
             double quantity = cursor.getDouble(6);
 
             PantryItem pantryItem = new PantryItem();
@@ -396,16 +399,7 @@ public class SmartGroceryDBHelper extends SQLiteOpenHelper {
             pantryItem.setCategory(categoryName);
             pantryItem.setPrice(itemPrice);
             pantryItem.setUnit(Unit.getUnit(unit));
-            DateFormat dateFormat = new SimpleDateFormat("mm/dd/yy");
-            Date expDateFormatted = null;
-            try{
-                expDateFormatted = dateFormat.parse(expDate);
-            }
-            catch(ParseException e) {
-                e.printStackTrace();
-            }
-
-            pantryItem.setExpiryDate(expDateFormatted);
+            pantryItem.setExpiryDate(expDate);
             pantryItem.setTotalQuantity(quantity);
 
             pantryItems.add(pantryItem);
