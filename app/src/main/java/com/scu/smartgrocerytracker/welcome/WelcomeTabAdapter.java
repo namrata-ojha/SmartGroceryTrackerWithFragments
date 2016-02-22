@@ -14,13 +14,13 @@ import com.scu.smartgrocerytracker.shoppingList.ShoppingList;
 
 import java.util.HashMap;
 
-public class WelcomeTabAdapter extends Fragmement settingFragment;
-    publ  printStatePagerAdapter {
-  Fragmvate Context context;
-    private gmentent categoryFragment;
-    private Frae Fra soppingCartFragment;
-    privat Fraggment pantryFragment;
-    privateic HashMap mFragmentTags ;
+public class WelcomeTabAdapter extends FragmentStatePagerAdapter {
+ Context context;
+    private Fragment categoryFragment;
+    private Fragment soppingCartFragment;
+    private Fragment pantryFragment;
+    private Fragment settingFragment;
+    private HashMap mFragmentTags ;
     private FragmentManager mFragmentManager;
 
     public WelcomeTabAdapter(FragmentManager fm,Context context) {

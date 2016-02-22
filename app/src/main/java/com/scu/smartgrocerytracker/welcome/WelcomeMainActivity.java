@@ -8,14 +8,13 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4vate ViewPagerscu.s.view.ViewPager;
+import android.support.v4.view.ViewPager;
 
-import com.elcommartgrocerytracker.R;
+import com.scu.smartgrocerytracker.R;
 
 
-public class W  prieMainActivity extends FragmentActivity {
-   mView
-Pager;
+public class WelcomeMainActivity extends FragmentActivity {
+    private ViewPager mViewPager;
     private WelcomeTabAdapter mTabAdapter;
     private WelcomeClassesTabLayout mTabLayout;
     ActionBar bar;
