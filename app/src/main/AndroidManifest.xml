@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.scu.smartgrocerytracker">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name="com.scu.smartgrocerytracker.welcome.WelcomeMainActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.scu.smartgrocerytracker.items.ItemListingActivity"
+            android:label="@string/title_activity_item_listing"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name="com.scu.smartgrocerytracker.pantry.AddToPantryActivity"
+            android:label="@string/title_activity_view_pantry_items"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+    </application>
+
+</manifest>

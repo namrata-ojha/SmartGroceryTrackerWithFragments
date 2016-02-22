@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Smart Grocery Tracker</string>
+    <string name="home">Smart Grocery</string>
+    <string name="settings">Settings</string>
+    <string name="grocery">Grocery</string>
+    <string name="shopping_bag">Shopping List</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="tutor_details">He is training students in Piano for ABRSM university, UK for the past 10 years. He is known for his specified and individual approaches to each and every student.</string>
+    <string name="course_details">We are conducting summer classes for 2 different age groups. (4 &#8211; 10 years and 11 &#8211; 16 years.) It will be a fun&#8211;filled learning experience to improve their skills and also define their interests towards different activities.</string>
+
+    <string name="title_activity_item_listing">Item List</string>
+    <string name="inventory">Inventory</string>
+    <string name="title_activity_view_pantry_items">Add to Pantry</string>
+    <item name="Uninstall" type="id" />
+</resources>
