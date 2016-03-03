@@ -85,7 +85,7 @@ public class AddToPantryActivity extends AppCompatActivity {
                 double price = Double.parseDouble(priceValue);
                 pantryItem.setPrice(price);
 
-                DateFormat dateFormat = new SimpleDateFormat("mm/dd/yy");
+                DateFormat dateFormat = new SimpleDateFormat("MM/dd/yy");
                 Date expiryDate = null;
                 try {
                     expiryDate = dateFormat.parse((((EditText) findViewById(R.id.expiryEditText)).getText().toString()));

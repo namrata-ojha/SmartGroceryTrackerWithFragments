@@ -4,12 +4,14 @@ import com.scu.smartgrocerytracker.constants.Unit;
 
 import org.apache.commons.lang3.time.DateFormatUtils;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Class to represent an item in Pantry
  */
-public class PantryItem {
+public class PantryItem implements Serializable{
+    private int id;
     private int itemId;
     private String name;
     private String category;
@@ -22,6 +24,13 @@ public class PantryItem {
     //Expiry date in milliseconds
     private long expiryDate;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getItemId() {
         return itemId;
@@ -96,7 +105,7 @@ public class PantryItem {
     }
 
     public String getExpiryDateString() {
-        return DateFormatUtils.format(expiryDate,"mm/dd/yy");
+        return DateFormatUtils.format(expiryDate,"MM/dd/yy");
     }
 
     @Override

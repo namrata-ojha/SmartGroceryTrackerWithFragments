@@ -13,4 +13,5 @@
     <string name="inventory">Inventory</string>
     <string name="title_activity_view_pantry_items">Add to Pantry</string>
     <item name="Uninstall" type="id" />
+    <string name="title_activity_update_pantry">Modify Inventory</string>
 </resources>

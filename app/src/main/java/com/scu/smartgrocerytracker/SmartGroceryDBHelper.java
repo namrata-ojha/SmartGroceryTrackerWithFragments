@@ -340,6 +340,31 @@ public class SmartGroceryDBHelper extends SQLiteOpenHelper {
         PantryDbUtils.addToPantry(db, item);
     }
 
+
+    /**
+     * Method to update the pantry item
+     * @param pantryItem
+     */
+    public void updatePantry(PantryItem pantryItem) {
+        Log.d(this.getClass().getSimpleName(), "Updating pantry item :" + pantryItem.getId() + ":" + pantryItem.getName());
+        SQLiteDatabase db;
+        if (myDb == null) {
+            myDb = getWritableDatabase();
+        }
+        db = myDb;
+        PantryDbUtils.updatePantry(db, pantryItem);
+    }
+
+    public void deletePantry(PantryItem item) {
+        Log.d(this.getClass().getSimpleName(), "Deleting pantry item :" + item);
+        SQLiteDatabase db;
+        if (myDb == null) {
+            myDb = getWritableDatabase();
+        }
+        db = myDb;
+        PantryDbUtils.deletePantryItem(db, item);
+    }
+
     public List<Items> getAllItemsFromShoppingList() {
         SQLiteDatabase db = this.getWritableDatabase();
         String where = null;
@@ -388,6 +413,7 @@ public class SmartGroceryDBHelper extends SQLiteOpenHelper {
             double quantity = cursor.getDouble(6);
 
             PantryItem pantryItem = new PantryItem();
+            pantryItem.setId(id);
             pantryItem.setName(itemName);
             pantryItem.setCategory(categoryName);
             pantryItem.setPrice(itemPrice);

@@ -6,6 +6,7 @@ import com.scu.smartgrocerytracker.pantry.PantryItem;
 
 
 import android.content.ContentValues;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
@@ -84,5 +85,43 @@ public class PantryDbUtils {
         Log.d("PantryDbUtils", "After insert");
     }
 
+    /**
+     * Method to insert Pantry item to Pantry table
+     * @param db
+     * @param item
+     */
+    public static void updatePantry(SQLiteDatabase db, PantryItem item) {
+        ContentValues newValues = new ContentValues();
+        newValues.put(Constants.ITEM_ID_COLUMN,item.getItemId());
+        newValues.put(Constants.ITEM_NAME_COLUMN, item.getName());
+        newValues.put(Constants.CATEGORY_NAME_COLUMN, item.getCategory());
+        newValues.put(PRICE_COLUMN, item.getPrice());
+        newValues.put(TOTAL_QUANTITY_COLUMN,item.getTotalQuantity());
+        newValues.put(UNIT_COLUMN, item.getUnit().toString());
+        newValues.put(EXPIRY_DATE_COLUMN, item.getExpiryDate());
+        newValues.put(QUANTITY_USED_COLUMN, item.getQuantityUsed());
+      /*  newValues.put(SERVING_QUANTITY_COLUMN, item.getServing().getQuantity());
+        newValues.put(SERVING_UNIT_COLUMN, item.getServing().getUnit().toString());
+        newValues.put(SERVING_TYPE_COLUMN, item.getServing().getType().toString());*/
+        try {
+            db.update(PANTRY_TABLE_NAME, newValues, Constants.ID_COLUMN + "=" + item.getId(), null);
+        }
+        catch(Exception e) {
+            Log.d("PantryDbUtils", "Error updating pantry item:" + item.getName() + " - " + e);
+        }
+        Log.d("PantryDbUtils", "Pantry item " + item.getName() + " updated with new values:"+newValues);
+    }
+
+    public static void deletePantryItem(SQLiteDatabase db,PantryItem item) {
+        try {
+            int result = db.delete(PANTRY_TABLE_NAME, Constants.ID_COLUMN + "=" + item.getId(), null);
+            Log.d("DeletePantry", result + " row(s) affected while deleting item :" +  item.getId() + "-" + item.getName());
+        }
+        catch(SQLException e) {
+            Log.e("DeletePantry", "Error deleting pantry item :" + item);
+        }
+
+
+    }
 
 }
