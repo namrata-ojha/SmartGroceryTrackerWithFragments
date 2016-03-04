@@ -25,7 +25,8 @@ import java.util.List;
 public class PantryFragment extends Fragment {
     ListView pantryListView ;
     SmartGroceryDBHelper dbHelper;
-    static final String FRAGTAG = "PantryFragment";
+    List<PantryItem> pantryItems;
+    static final int REQUEST_CODE = 1;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -33,7 +34,7 @@ public class PantryFragment extends Fragment {
         pantryListView = (ListView) rootView.findViewById(R.id.pantryListView);
         dbHelper = SmartGroceryDBHelper.getInstance(getActivity().getApplicationContext());
 
-        final List<PantryItem> pantryItems = dbHelper.getAllPantryItems();
+        pantryItems = dbHelper.getAllPantryItems();
         pantryListView.setAdapter(new PantryListingAdapter(this.getActivity(), R.layout.pantry_list_row, pantryItems));
         pantryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -51,13 +52,11 @@ public class PantryFragment extends Fragment {
         return rootView;
    }
 
-
     @Override
     public void onResume() {
         super.onResume();
         dbHelper = SmartGroceryDBHelper.getInstance(getActivity().getApplicationContext());
-
-        List<PantryItem> pantryItems = dbHelper.getAllPantryItems();
+        pantryItems = dbHelper.getAllPantryItems();
         pantryListView.setAdapter(new PantryListingAdapter(this.getActivity(), R.layout.pantry_list_row, pantryItems));
 
 
