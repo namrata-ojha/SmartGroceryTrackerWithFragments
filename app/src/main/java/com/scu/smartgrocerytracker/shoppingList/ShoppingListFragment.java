@@ -24,9 +24,9 @@ import com.scu.smartgrocerytracker.pantry.AddToPantryActivity;
 import com.scu.smartgrocerytracker.items.Items;
 
 /**
- * Created by namrataojha on 2/19/16.
+ *
  */
-public class ShoppingList extends Fragment {
+public class ShoppingListFragment extends Fragment {
     SmartGroceryDBHelper dbHelper;
     ShoppingBagAdapter adapter;
     ListView listView;
@@ -36,14 +36,7 @@ public class ShoppingList extends Fragment {
                              Bundle savedInstanceState) {
         final ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.shopping_list, container, false);
 
-//        FragmentTransaction ft = getFragmentManager().beginTransaction();
-//        ft.detach(this).attach(this).commit();
 
-
-//            FragmentTransaction fragTransaction =   (getActivity()).getFragmentManager().beginTransaction();
-//
-//            fragTransaction.attach(new ShoppingList());
-//            fragTransaction.commit();
 
         Log.d("shopping Fragment ", "Called");
 

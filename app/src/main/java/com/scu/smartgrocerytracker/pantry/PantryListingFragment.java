@@ -20,9 +20,9 @@ import com.scu.smartgrocerytracker.shoppingList.ShoppingBagAdapter;
 import java.util.List;
 
 /**
- * Created by namrataojha on 2/19/16.
+ * @author Aparna
  */
-public class PantryFragment extends Fragment {
+public class PantryListingFragment extends Fragment {
     ListView pantryListView ;
     SmartGroceryDBHelper dbHelper;
     List<PantryItem> pantryItems;

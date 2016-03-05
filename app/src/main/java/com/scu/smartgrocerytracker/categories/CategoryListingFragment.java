@@ -19,9 +19,9 @@ import java.util.List;
 
 
 /**
- * Created by namrataojha on 2/18/16.
+ *
  */
-public class CategoryListingActivity extends Fragment {
+public class CategoryListingFragment extends Fragment {
     SmartGroceryDBHelper dbHelper;
 
     @Override
