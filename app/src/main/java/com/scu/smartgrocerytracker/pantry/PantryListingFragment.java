@@ -53,7 +53,7 @@ public class PantryListingFragment extends Fragment {
    }
 
     @Override
-    public void onResume() {
+     public void onResume() {
         super.onResume();
         dbHelper = SmartGroceryDBHelper.getInstance(getActivity().getApplicationContext());
         pantryItems = dbHelper.getAllPantryItems();
