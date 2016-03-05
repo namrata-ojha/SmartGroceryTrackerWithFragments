@@ -4,13 +4,12 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.support.v13.app.FragmentStatePagerAdapter;
-import android.view.View;
 import android.view.ViewGroup;
 
-import com.scu.smartgrocerytracker.categories.CategoryListingActivity;
-import com.scu.smartgrocerytracker.pantry.PantryFragment;
+import com.scu.smartgrocerytracker.categories.CategoryListingFragment;
+import com.scu.smartgrocerytracker.pantry.PantryListingFragment;
 import com.scu.smartgrocerytracker.settings.Settings;
-import com.scu.smartgrocerytracker.shoppingList.ShoppingList;
+import com.scu.smartgrocerytracker.shoppingList.ShoppingListFragment;
 
 import java.util.HashMap;
 
@@ -35,19 +34,19 @@ public class WelcomeTabAdapter extends FragmentStatePagerAdapter {
             case 0:
                 return new WelcomeFragment();
             case 1:
-                categoryFragment=new CategoryListingActivity();
+                categoryFragment=new CategoryListingFragment();
                // categoryFragment.getView().bringToFront();
                 //categoryFragment.getView().setVisibility(View.GONE);
                 return categoryFragment;
 
             case 2:
-                soppingCartFragment=new ShoppingList();
+                soppingCartFragment=new ShoppingListFragment();
                 //soppingCartFragment.getView().bringToFront();
                // soppingCartFragment.getView().setVisibility(View.GONE);
 
                 return soppingCartFragment;
             case 3:
-                pantryFragment=new PantryFragment();
+                pantryFragment=new PantryListingFragment();
                 return pantryFragment;
 
             case 4:

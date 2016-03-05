@@ -44,14 +44,17 @@ public class WelcomeMainActivity extends FragmentActivity {
 
             }
 
+
+
+
+
             @Override
             public void onPageSelected(int arg0) {
                 //  bar.setSelectedNavigationItem(arg0);
                 Fragment fragment = ((WelcomeTabAdapter) mViewPager.getAdapter()).getFragment(arg0);
-                if ((arg0 == 2 || arg0 == 3 || arg0 == 1 || arg0 == 4 || arg0 == 0) && fragment != null) {
+                if ((arg0 == 2 || arg0 == 3 || arg0 == 1 || arg0 == 4 || arg0 == 0 ) && fragment != null) {
                     fragment.onResume();
                 }
-
 
             }
 
