@@ -380,7 +380,8 @@ public class SmartGroceryDBHelper extends SQLiteOpenHelper {
             String itemName = cursor.getString(1);
             String imagePath = cursor.getString(2);
             String itemCategory = cursor.getString(3);
-            Items item = new Items(id, itemName, imagePath, itemCategory);
+            int itemId = cursor.getInt(4);
+            Items item = new Items(itemId, itemName, imagePath, itemCategory);
             itemsList.add(item);
             Log.d("Item Listing", String.format("%s,%s,%s", id, itemName, imagePath, itemCategory));
         }
@@ -399,21 +400,23 @@ public class SmartGroceryDBHelper extends SQLiteOpenHelper {
         String groupBy = null;
         String having = null;
         String order = null;
-        String[] resultColumns = {Constants.ID_COLUMN, Constants.ITEM_NAME_COLUMN, Constants.CATEGORY_NAME_COLUMN
+        String[] resultColumns = {Constants.ID_COLUMN, Constants.ITEM_ID_COLUMN,Constants.ITEM_NAME_COLUMN, Constants.CATEGORY_NAME_COLUMN
                 ,PantryDbUtils.PRICE_COLUMN,PantryDbUtils.UNIT_COLUMN,PantryDbUtils.EXPIRY_DATE_COLUMN,PantryDbUtils.TOTAL_QUANTITY_COLUMN};
         Cursor cursor = db.query(PantryDbUtils.PANTRY_TABLE_NAME, resultColumns, where, whereArgs, groupBy, having, order);
         List<PantryItem> pantryItems = new ArrayList<>();
         while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
-            String itemName = cursor.getString(1);
-            String categoryName = cursor.getString(2);
-            double itemPrice = cursor.getDouble(3);
-            String unit = cursor.getString(4);
-            long expDate = cursor.getLong(5);
-            double quantity = cursor.getDouble(6);
+            int itemId = cursor.getInt(1);
+            String itemName = cursor.getString(2);
+            String categoryName = cursor.getString(3);
+            double itemPrice = cursor.getDouble(4);
+            String unit = cursor.getString(5);
+            long expDate = cursor.getLong(6);
+            double quantity = cursor.getDouble(7);
 
             PantryItem pantryItem = new PantryItem();
             pantryItem.setId(id);
+            pantryItem.setItemId(itemId);
             pantryItem.setName(itemName);
             pantryItem.setCategory(categoryName);
             pantryItem.setPrice(itemPrice);
