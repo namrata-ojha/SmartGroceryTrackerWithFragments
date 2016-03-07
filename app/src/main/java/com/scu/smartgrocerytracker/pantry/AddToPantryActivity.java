@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.scu.smartgrocerytracker.BarcodeScanner.BarcodeFragment;
 import com.scu.smartgrocerytracker.R;
 import com.scu.smartgrocerytracker.SmartGroceryDBHelper;
 import com.scu.smartgrocerytracker.constants.Constants;
@@ -30,6 +31,7 @@ public class AddToPantryActivity extends AppCompatActivity {
     private TextView itemNameView;
     private TextView categoryView;
     private Spinner unitSpinner;
+    String productName;
 private  EditText editTextPrice;
 
     @Override
@@ -46,15 +48,18 @@ private  EditText editTextPrice;
         Bundle bundle = getIntent().getExtras();
 
         // for setting text price from barcode by Namrata
-        final String productName =  (String)bundle.getSerializable("product");
-        Log.d("productNamePantry",productName);
-        Double productCost =  (Double)bundle.getSerializable("cost");
 
-        if(productName.length()>0)
+
+        if(BarcodeFragment.barcodeToPantry==true)
+
         {
+            productName =  (String)bundle.getSerializable("product");
+            Log.d("productNamePantry", productName);
+            Double productCost =  (Double)bundle.getSerializable("cost");
             itemNameView.setText(productName);
             editTextPrice.setText(Double.toString(productCost));
             categoryView.setText("Uncategorized");
+
         }
         else
         {
@@ -85,10 +90,11 @@ private  EditText editTextPrice;
             public void onClick(View v) {
                 PantryItem pantryItem = new PantryItem();
                // for adding product from barcode by namrata
-                if(productName.length()>0){
+                if(BarcodeFragment.barcodeToPantry=true){
                     pantryItem.setName(productName);
                    // pantryItem.setItemId(item.getId());
                     pantryItem.setCategory("Uncategorized");
+                    BarcodeFragment.barcodeToPantry =false;
                 }else {
                     pantryItem.setName(item.getItemName());
                     pantryItem.setItemId(item.getId());

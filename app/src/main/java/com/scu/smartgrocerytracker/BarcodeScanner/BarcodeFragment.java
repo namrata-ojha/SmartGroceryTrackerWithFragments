@@ -59,12 +59,13 @@ public class BarcodeFragment extends Fragment {
     View txtcost;
     View textProductViewLabel;
     View txtCostLabel;
+    public static  Boolean barcodeToPantry = false;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
          rootView = (ViewGroup) inflater.inflate(R.layout.barcode_layout, container, false);
         txtProduct = (TextView)rootView.findViewById(R.id.textViewProductName);
-
+        barcodeToPantry =true;
 // making widgets  invisble
         textProductView = rootView.findViewById(R.id.textViewProductName);
         textProductView.setVisibility(View.GONE);
@@ -111,6 +112,7 @@ public class BarcodeFragment extends Fragment {
             public void onClick(View arg0) {
                 Intent i = new Intent(getActivity().getApplicationContext(), AddToPantryActivity.class);
                 Bundle bundle = new Bundle();
+                barcodeToPantry =true;
                 bundle.putSerializable("product",  productName);
                 bundle.putSerializable("cost", prCost);
 

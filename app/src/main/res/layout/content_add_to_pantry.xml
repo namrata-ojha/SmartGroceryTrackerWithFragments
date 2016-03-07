@@ -49,7 +49,8 @@
         android:inputType="number"
         android:layout_alignBottom="@+id/quantityTextView"
         android:layout_alignLeft="@+id/priceEditText"
-        android:layout_alignStart="@+id/priceEditText" />
+        android:layout_alignStart="@+id/priceEditText"
+        android:text="1" />
 
     <Spinner
         android:layout_width="wrap_content"

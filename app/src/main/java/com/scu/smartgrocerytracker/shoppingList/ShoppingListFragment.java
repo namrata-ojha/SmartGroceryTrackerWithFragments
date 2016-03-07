@@ -16,6 +16,7 @@ import java.io.Serializable;
 import java.util.List;
 
 
+import com.scu.smartgrocerytracker.BarcodeScanner.BarcodeFragment;
 import com.scu.smartgrocerytracker.R;
 import com.scu.smartgrocerytracker.SmartGroceryDBHelper;
 import com.scu.smartgrocerytracker.constants.Constants;
@@ -36,7 +37,7 @@ public class ShoppingListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.shopping_list, container, false);
-
+        BarcodeFragment.barcodeToPantry =false;
 
         Log.d("shopping Fragment ", "Called");
 
