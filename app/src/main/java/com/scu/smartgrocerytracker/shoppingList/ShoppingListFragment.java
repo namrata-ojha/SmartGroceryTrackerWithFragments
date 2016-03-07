@@ -31,11 +31,11 @@ public class ShoppingListFragment extends Fragment {
     ShoppingBagAdapter adapter;
     ListView listView;
     List<Items> shoppedItems;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.shopping_list, container, false);
-
 
 
         Log.d("shopping Fragment ", "Called");
@@ -55,24 +55,27 @@ public class ShoppingListFragment extends Fragment {
             Log.d("Shopping Bag from list", c.getItemName().toString());
 
         }
-        adapter =new ShoppingBagAdapter(this.getActivity(), R.layout.content_shopping_bag_view, shoppedItems);
+        adapter = new ShoppingBagAdapter(this.getActivity(), R.layout.content_shopping_bag_view, shoppedItems);
 
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-               // Items item = (Items) parent.getItemAtPosition(position);
+                // Items item = (Items) parent.getItemAtPosition(position);
                 Items itemClicked = (Items) parent.getItemAtPosition(position);
+                String itemName2 = itemClicked.getItemName();
+                int itemId2 = itemClicked.getId();
+                //call the delete row function
+                dbHelper.deleteByNameFromShoppingList(itemName2);
 
                 Intent i = new Intent(getActivity().getApplicationContext(), AddToPantryActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putSerializable(Constants.ITEM_TABLE_NAME,  itemClicked);
+                bundle.putSerializable(Constants.ITEM_TABLE_NAME, itemClicked);
                 i.putExtras(bundle);
                 startActivity(i);
 
             }
         });
-
 
 
         return rootView;
@@ -86,7 +89,7 @@ public class ShoppingListFragment extends Fragment {
 
         shoppedItems = dbHelper.getAllItemsFromShoppingList();
 
-        adapter =new ShoppingBagAdapter(this.getActivity(), R.layout.content_shopping_bag_view, shoppedItems);
+        adapter = new ShoppingBagAdapter(this.getActivity(), R.layout.content_shopping_bag_view, shoppedItems);
 
         listView.setAdapter(adapter);
 

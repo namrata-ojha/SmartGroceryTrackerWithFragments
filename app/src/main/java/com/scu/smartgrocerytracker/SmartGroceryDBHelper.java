@@ -55,6 +55,7 @@ public class SmartGroceryDBHelper extends SQLiteOpenHelper {
         //Initialize pantry list
         db.execSQL(PantryDbUtils.PANTRY_TABLE_CREATE);
     }
+
     public SQLiteDatabase getDB() {
         return myDb;
     }
@@ -98,6 +99,7 @@ public class SmartGroceryDBHelper extends SQLiteOpenHelper {
             insert(db, c);
         }
     }
+
     private void insertIntoItem(SQLiteDatabase db) {
         List<Items> itemList = new ArrayList<>();
         Items asparagusItems = new Items("Asparagus", "asparagusdb.jpg", "Vegetables");
@@ -146,9 +148,6 @@ public class SmartGroceryDBHelper extends SQLiteOpenHelper {
         Items eggsItems = new Items("Eggs", "eggs.jpg", "Dairy");
 
 
-
-
-
         itemList.add(asparagusItems);
         itemList.add(basilItems);
         itemList.add(vegetablesItems);
@@ -190,7 +189,6 @@ public class SmartGroceryDBHelper extends SQLiteOpenHelper {
         itemList.add(eggsItems);
 
 
-
         for (Items i : itemList) {
             insertItem(db, i);
         }
@@ -216,7 +214,7 @@ public class SmartGroceryDBHelper extends SQLiteOpenHelper {
     }
 
     //insert rows in items in shopping List table
-    public void insertItemInShoppingList(String itemName, String categoryName, Integer quantity, Integer itemRefrenceId,String itemPathh) {
+    public void insertItemInShoppingList(String itemName, String categoryName, Integer quantity, Integer itemRefrenceId, String itemPathh) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues newValues = new ContentValues();
         //  newValues.put(Constants.ITEM_UPC_COLUMN, item.getUpc());
@@ -224,7 +222,7 @@ public class SmartGroceryDBHelper extends SQLiteOpenHelper {
         newValues.put(Constants.SHOOPINGLIST_ITEM_CATEGORY_COLUMN, categoryName);
 
         newValues.put(Constants.SHOOPINGLIST_ITEM_QUANTITY_COLUMN, quantity);
-        newValues.put(Constants.SHOPPINGLIST_ITEM_IMAGE_PATH,itemPathh);
+        newValues.put(Constants.SHOPPINGLIST_ITEM_IMAGE_PATH, itemPathh);
         newValues.put(Constants.SHOOPINGLIST_ITEM_ID_REFRENCE_COLUMN, itemRefrenceId);
         db.insert(Constants.SHOPPINGLIST_TABLE_NAME, null, newValues);
     }
@@ -343,6 +341,7 @@ public class SmartGroceryDBHelper extends SQLiteOpenHelper {
 
     /**
      * Method to update the pantry item
+     *
      * @param pantryItem
      */
     public void updatePantry(PantryItem pantryItem) {
@@ -391,6 +390,7 @@ public class SmartGroceryDBHelper extends SQLiteOpenHelper {
 
     /**
      * Gets all the categories
+     *
      * @return list of <code>Category</code>
      */
     public List<PantryItem> getAllPantryItems() {
@@ -400,8 +400,8 @@ public class SmartGroceryDBHelper extends SQLiteOpenHelper {
         String groupBy = null;
         String having = null;
         String order = null;
-        String[] resultColumns = {Constants.ID_COLUMN, Constants.ITEM_ID_COLUMN,Constants.ITEM_NAME_COLUMN, Constants.CATEGORY_NAME_COLUMN
-                ,PantryDbUtils.PRICE_COLUMN,PantryDbUtils.UNIT_COLUMN,PantryDbUtils.EXPIRY_DATE_COLUMN,PantryDbUtils.TOTAL_QUANTITY_COLUMN};
+        String[] resultColumns = {Constants.ID_COLUMN, Constants.ITEM_ID_COLUMN, Constants.ITEM_NAME_COLUMN, Constants.CATEGORY_NAME_COLUMN
+                , PantryDbUtils.PRICE_COLUMN, PantryDbUtils.UNIT_COLUMN, PantryDbUtils.EXPIRY_DATE_COLUMN, PantryDbUtils.TOTAL_QUANTITY_COLUMN};
         Cursor cursor = db.query(PantryDbUtils.PANTRY_TABLE_NAME, resultColumns, where, whereArgs, groupBy, having, order);
         List<PantryItem> pantryItems = new ArrayList<>();
         while (cursor.moveToNext()) {
@@ -429,6 +429,15 @@ public class SmartGroceryDBHelper extends SQLiteOpenHelper {
         }
         return pantryItems;
 
+    }
+
+
+    public void deleteByNameFromShoppingList(String name) {
+        SQLiteDatabase db = getWritableDatabase();
+        // db.execSQL("DELETE FROM "+Constants.SHOPPINGLIST_TABLE_NAME+" WHERE "+Constants.SHOOPINGLIST_ITEM_ID_REFRENCE_COLUMN+"="+id);
+        db.execSQL("DELETE FROM " + Constants.SHOPPINGLIST_TABLE_NAME + " WHERE " + Constants.SHOPPINGLIST_ITEM_NAME_COLUMN + "='" + name + "'");
+        db.close();
+        // db.delete(Constants.SHOPPINGLIST_TABLE_NAME, Constants.SHOPPINGLIST_ITEM_NAME_COLUMN+"="+name+"", null);
     }
 
 

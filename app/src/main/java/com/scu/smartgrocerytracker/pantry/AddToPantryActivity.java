@@ -50,11 +50,14 @@ private  EditText editTextPrice;
         Log.d("productNamePantry",productName);
         Double productCost =  (Double)bundle.getSerializable("cost");
 
-        if(productName.length()>0){
+        if(productName.length()>0)
+        {
             itemNameView.setText(productName);
             editTextPrice.setText(Double.toString(productCost));
             categoryView.setText("Uncategorized");
-        }else {
+        }
+        else
+        {
         //////////////////////////////////////by Namrata
 
             item = (Items) bundle.getSerializable(Constants.ITEM_TABLE_NAME);
