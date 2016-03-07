@@ -13,24 +13,16 @@
     tools:showIn="@layout/activity_update_pantry">
 
     <TextView
-        android:layout_width="60dp"
-        android:layout_height="20dp"
+        android:layout_width="match_parent"
+
         android:id="@+id/itemNameTextView"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/unitSpinner"
-        android:layout_alignStart="@+id/unitSpinner"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#2c43b9"
-        android:textStyle="bold" />
-
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="2dip"
-        android:background="#858e85"
-        android:layout_above="@+id/categoryTextView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/view" />
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="Item Name here" />
 
     <TextView
         android:layout_width="wrap_content"

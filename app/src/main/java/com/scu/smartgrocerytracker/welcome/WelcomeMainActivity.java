@@ -121,4 +121,8 @@ public class WelcomeMainActivity extends FragmentActivity {
 
     }
 
+    public void changeFragment(int pos){
+        mViewPager.setCurrentItem(pos, true);
+    }
+
 }

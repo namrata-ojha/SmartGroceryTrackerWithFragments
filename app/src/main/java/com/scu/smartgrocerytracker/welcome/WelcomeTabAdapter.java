@@ -6,6 +6,7 @@ import android.content.Context;
 import android.support.v13.app.FragmentStatePagerAdapter;
 import android.view.ViewGroup;
 
+import com.scu.smartgrocerytracker.BarcodeScanner.BarcodeFragment;
 import com.scu.smartgrocerytracker.categories.CategoryListingFragment;
 import com.scu.smartgrocerytracker.pantry.PantryListingFragment;
 import com.scu.smartgrocerytracker.settings.Settings;
@@ -19,6 +20,7 @@ public class WelcomeTabAdapter extends FragmentStatePagerAdapter {
     private Fragment soppingCartFragment;
     private Fragment pantryFragment;
     private Fragment settingFragment;
+    private Fragment barcodeFragment;
     private HashMap mFragmentTags ;
     private FragmentManager mFragmentManager;
 
@@ -48,8 +50,11 @@ public class WelcomeTabAdapter extends FragmentStatePagerAdapter {
             case 3:
                 pantryFragment=new PantryListingFragment();
                 return pantryFragment;
-
             case 4:
+                barcodeFragment=new BarcodeFragment();
+                return barcodeFragment;
+
+            case 5:
                 settingFragment=new Settings();
                 return settingFragment;
 
@@ -60,7 +65,7 @@ public class WelcomeTabAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 5;
+        return 6;
     }
 
     @Override

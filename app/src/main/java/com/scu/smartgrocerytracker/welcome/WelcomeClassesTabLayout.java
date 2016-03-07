@@ -30,6 +30,7 @@ public class WelcomeClassesTabLayout extends TabLayout {
         addTab(R.drawable.tab_grocery_icon, R.string.grocery);
         addTab(R.drawable.shoppinglist, R.string.shopping_bag);
         addTab(R.drawable.inventory, R.string.inventory);
+        addTab(R.drawable.barcode, R.string.barcode);
         addTab(R.drawable.settings, R.string.settings);
     }
 

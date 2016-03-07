@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/container"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="#ffffff"
+android:orientation="vertical"
+tools:context="com.javacodegeeks.androidstartactivityforresultexample.ActivityOne" >
+
+<TextView
+    android:id="@+id/textView1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center|top"
+    android:layout_margin="20dp"
+    android:text="Scan"
+    android:textSize="30dp"
+    android:textColor="#2c43b9"
+    android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/scanner2"
+        android:layout_width="239dp"
+        android:layout_height="80dp"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:textSize="18dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/barcodelabel">
+    </Button>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Barcode"
+        android:id="@+id/textViewBarcode"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_margin="2dp"
+        android:layout_gravity="center_horizontal" />
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Cost"
+            android:id="@+id/textViewCost"
+            android:layout_alignTop="@+id/textViewCostLabel"
+            android:layout_alignLeft="@+id/textViewProductName"
+            android:layout_alignStart="@+id/textViewProductName"
+            android:layout_alignRight="@+id/textViewProductName"
+            android:layout_alignEnd="@+id/textViewProductName" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Cost"
+            android:id="@+id/textViewCostLabel"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/textViewProductName"
+            android:layout_toStartOf="@+id/textViewProductName"
+            android:layout_margin="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Product Name"
+            android:id="@+id/textViewPrLabel"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_margin="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Product Name"
+            android:id="@+id/textViewProductName"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/textViewPrLabel"
+            android:layout_toEndOf="@+id/textViewPrLabel"
+            android:layout_margin="10dp" />
+
+
+    </RelativeLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add to Inventory"
+        android:id="@+id/buttonAddToInventory"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/textViewPrLabel"
+        android:layout_alignStart="@+id/textViewPrLabel"
+        android:layout_gravity="center_horizontal" />
+
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/responseView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </ScrollView>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

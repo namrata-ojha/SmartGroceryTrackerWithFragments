@@ -30,7 +30,7 @@ public class AddToPantryActivity extends AppCompatActivity {
     private TextView itemNameView;
     private TextView categoryView;
     private Spinner unitSpinner;
-
+private  EditText editTextPrice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,19 +38,33 @@ public class AddToPantryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_to_pantry);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        // for setting text price from barcode by Namrata
+        editTextPrice=(EditText) findViewById(R.id.priceEditText);
+        itemNameView = (TextView) findViewById(R.id.itemNameTextView);
+        categoryView = (TextView) findViewById(R.id.categoryTextView);
         //Get Item name and category from Shopping list activity
         Bundle bundle = getIntent().getExtras();
-        item = (Items) bundle.getSerializable(Constants.ITEM_TABLE_NAME);
-        int itemId = item.getId();
-        String itemName = item.getItemName();
-        String itemCategory = item.getItemCategory();
 
-        itemNameView = (TextView)findViewById(R.id.itemNameTextView);
-        itemNameView.setText(itemName);
+        // for setting text price from barcode by Namrata
+        final String productName =  (String)bundle.getSerializable("product");
+        Log.d("productNamePantry",productName);
+        Double productCost =  (Double)bundle.getSerializable("cost");
 
-        categoryView = (TextView) findViewById(R.id.categoryTextView);
-        categoryView.setText(itemCategory);
+        if(productName.length()>0){
+            itemNameView.setText(productName);
+            editTextPrice.setText(Double.toString(productCost));
+            categoryView.setText("Uncategorized");
+        }else {
+        //////////////////////////////////////by Namrata
+
+            item = (Items) bundle.getSerializable(Constants.ITEM_TABLE_NAME);
+//        int itemId = item.getId();
+            String itemName = item.getItemName();
+            String itemCategory = item.getItemCategory();
+            //setting the value
+            itemNameView.setText(itemName);
+            categoryView.setText(itemCategory);
+        }
 
         //Populate the Unit Spinner with possible values
         unitSpinner = (Spinner) findViewById(R.id.unitSpinner);
@@ -67,9 +81,16 @@ public class AddToPantryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 PantryItem pantryItem = new PantryItem();
-                pantryItem.setName(item.getItemName());
-                pantryItem.setItemId(item.getId());
-                pantryItem.setCategory(item.getItemCategory());
+               // for adding product from barcode by namrata
+                if(productName.length()>0){
+                    pantryItem.setName(productName);
+                   // pantryItem.setItemId(item.getId());
+                    pantryItem.setCategory("Uncategorized");
+                }else {
+                    pantryItem.setName(item.getItemName());
+                    pantryItem.setItemId(item.getId());
+                    pantryItem.setCategory(item.getItemCategory());
+                }
 
                 EditText totalQuantityText = (EditText) findViewById(R.id.editText);
                 double totalQuantity = Double.parseDouble(totalQuantityText.getText().toString());
