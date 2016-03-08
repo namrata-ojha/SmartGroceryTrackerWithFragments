@@ -53,12 +53,17 @@ private  EditText editTextPrice;
         if(BarcodeFragment.barcodeToPantry==true)
 
         {
-            productName =  (String)bundle.getSerializable("product");
-            Log.d("productNamePantry", productName);
-            Double productCost =  (Double)bundle.getSerializable("cost");
-            itemNameView.setText(productName);
-            editTextPrice.setText(Double.toString(productCost));
-            categoryView.setText("Uncategorized");
+            try {
+                productName = (String) bundle.getSerializable("product");
+                Log.d("productNamePantry", productName);
+                Double productCost = (Double) bundle.getSerializable("cost");
+                itemNameView.setText(productName);
+                editTextPrice.setText(Double.toString(productCost));
+                categoryView.setText("Uncategorized");
+            }catch(Exception e){
+                Log.d("Got in barcode Mode",e.toString());
+
+        }
 
         }
         else
@@ -66,8 +71,9 @@ private  EditText editTextPrice;
         //////////////////////////////////////by Namrata
 
             item = (Items) bundle.getSerializable(Constants.ITEM_TABLE_NAME);
-//        int itemId = item.getId();
+            int itemId = item.getId();
             String itemName = item.getItemName();
+           // Log.d("ProdName from Shopping",itemName);
             String itemCategory = item.getItemCategory();
             //setting the value
             itemNameView.setText(itemName);
@@ -90,13 +96,16 @@ private  EditText editTextPrice;
             public void onClick(View v) {
                 PantryItem pantryItem = new PantryItem();
                // for adding product from barcode by namrata
-                if(BarcodeFragment.barcodeToPantry=true){
+                if(BarcodeFragment.barcodeToPantry==true){
                     pantryItem.setName(productName);
                    // pantryItem.setItemId(item.getId());
                     pantryItem.setCategory("Uncategorized");
+                    Log.d("Got in barcode Mode", "Barcode");
                     BarcodeFragment.barcodeToPantry =false;
                 }else {
+
                     pantryItem.setName(item.getItemName());
+                    Log.d("ProdName from Shopping", item.getItemName());
                     pantryItem.setItemId(item.getId());
                     pantryItem.setCategory(item.getItemCategory());
                 }

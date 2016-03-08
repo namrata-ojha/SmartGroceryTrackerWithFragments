@@ -15,7 +15,6 @@ import android.widget.ListView;
 import com.scu.smartgrocerytracker.R;
 import com.scu.smartgrocerytracker.SmartGroceryDBHelper;
 import com.scu.smartgrocerytracker.db_helper.PantryDbUtils;
-import com.scu.smartgrocerytracker.shoppingList.ShoppingBagAdapter;
 
 import java.util.List;
 
@@ -35,7 +34,7 @@ public class PantryListingFragment extends Fragment {
         dbHelper = SmartGroceryDBHelper.getInstance(getActivity().getApplicationContext());
 
         pantryItems = dbHelper.getAllPantryItems();
-        pantryListView.setAdapter(new PantryListingAdapter(this.getActivity(), R.layout.pantry_list_row, pantryItems));
+        pantryListView.setAdapter(new PantryListingAdapter(this.getActivity(), R.layout.inventory_list_row, pantryItems));
         pantryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -57,7 +56,7 @@ public class PantryListingFragment extends Fragment {
         super.onResume();
         dbHelper = SmartGroceryDBHelper.getInstance(getActivity().getApplicationContext());
         pantryItems = dbHelper.getAllPantryItems();
-        pantryListView.setAdapter(new PantryListingAdapter(this.getActivity(), R.layout.pantry_list_row, pantryItems));
+        pantryListView.setAdapter(new PantryListingAdapter(this.getActivity(), R.layout.inventory_list_row, pantryItems));
 
 
     }

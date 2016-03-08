@@ -11,6 +11,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -65,7 +66,8 @@ public class BarcodeFragment extends Fragment {
                              Bundle savedInstanceState) {
          rootView = (ViewGroup) inflater.inflate(R.layout.barcode_layout, container, false);
         txtProduct = (TextView)rootView.findViewById(R.id.textViewProductName);
-        barcodeToPantry =true;
+        //txtProduct.setMovementMethod(new ScrollingMovementMethod());
+
 // making widgets  invisble
         textProductView = rootView.findViewById(R.id.textViewProductName);
         textProductView.setVisibility(View.GONE);

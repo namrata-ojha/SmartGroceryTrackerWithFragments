@@ -1,6 +1,7 @@
 package com.scu.smartgrocerytracker.pantry;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,8 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.scu.smartgrocerytracker.R;
-
-import org.apache.commons.lang3.time.DateFormatUtils;
 
 import java.util.List;
 
@@ -33,12 +32,15 @@ public class PantryListingAdapter extends ArrayAdapter<PantryItem> {
 
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService
                 (Context.LAYOUT_INFLATER_SERVICE);
-        View row = inflater.inflate(R.layout.pantry_list_row, null);
+        View row = inflater.inflate(R.layout.inventory_list_row, null);
 
         // Set the text
         TextView itemNameTextView = (TextView) row.findViewById(R.id.itemNameTextView);
         itemNameTextView.setText(pantryItem.getName());
-
+        try {
+            if (pantryItem.getName() != null) ;
+            Log.d("Adding InventoryName", pantryItem.getName());
+        }catch(Exception e){Log.d("PantryAdapter",e.toString());}
         TextView quantityTextView = (TextView) row.findViewById(R.id.quantityTextView);
         quantityTextView.setText("("+pantryItem.getTotalQuantity()+""+pantryItem.getUnit()+")");
 
