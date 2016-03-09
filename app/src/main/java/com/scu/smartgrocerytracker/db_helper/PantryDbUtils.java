@@ -8,7 +8,10 @@ import com.scu.smartgrocerytracker.pantry.PantryItem;
 import android.content.ContentValues;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.text.TextUtils;
 import android.util.Log;
+
+import java.util.Set;
 
 
 /**
@@ -124,4 +127,16 @@ public class PantryDbUtils {
 
     }
 
+    public static void deletePantryItems(SQLiteDatabase db, Set<Integer> pantryItems) {
+        String args = TextUtils.join(", ", pantryItems);
+        final String SQL = String.format("DELETE FROM " + PANTRY_TABLE_NAME + " WHERE "+ Constants.ID_COLUMN + " IN (%s);", args);
+        Log.d(PantryDbUtils.class.getSimpleName(), "Executing SQL:" + SQL);
+        try {
+            db.execSQL(SQL);
+        }
+        catch(SQLException e) {
+            Log.e(PantryDbUtils.class.getSimpleName(),"Error deleting pantry items" , e);
+        }
+
+    }
 }

@@ -16,6 +16,7 @@ import com.scu.smartgrocerytracker.pantry.PantryItem;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 
 public class SmartGroceryDBHelper extends SQLiteOpenHelper {
@@ -362,6 +363,16 @@ public class SmartGroceryDBHelper extends SQLiteOpenHelper {
         }
         db = myDb;
         PantryDbUtils.deletePantryItem(db, item);
+    }
+
+    public void deletePantryItems(Set<Integer> pantryItems) {
+        Log.d(this.getClass().getSimpleName(), "Deleting pantry items :" + pantryItems);
+        SQLiteDatabase db;
+        if (myDb == null) {
+            myDb = getWritableDatabase();
+        }
+        db = myDb;
+        PantryDbUtils.deletePantryItems(db, pantryItems);
     }
 
     public List<Items> getAllItemsFromShoppingList() {
