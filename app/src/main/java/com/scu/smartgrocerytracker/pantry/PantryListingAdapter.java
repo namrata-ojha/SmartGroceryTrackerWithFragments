@@ -18,11 +18,9 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-
-
 /**
- * Created by apar.sri on 2/20/2016.
+ * @Author Aparna
+ * Adpater that provides list view for the Inventory items.
  */
 public class PantryListingAdapter extends ArrayAdapter<PantryItem> {
 
@@ -30,10 +28,7 @@ public class PantryListingAdapter extends ArrayAdapter<PantryItem> {
 
     private Set<Integer> checkedPantryItems ;
 
-    public static final int POSITION = 1;
-    public static final int PANTRY_ID = 2;
-
-    public PantryListingAdapter(Context context, int resource, List<PantryItem> pantryItems, Set<Integer> checkedPantryItems) {
+      public PantryListingAdapter(Context context, int resource, List<PantryItem> pantryItems, Set<Integer> checkedPantryItems) {
         super(context, resource, pantryItems);
         this.pantryItems = pantryItems;
         this.checkedPantryItems = checkedPantryItems;
@@ -59,9 +54,6 @@ public class PantryListingAdapter extends ArrayAdapter<PantryItem> {
 
         CheckBox checkBox = (CheckBox)row.findViewById(R.id.checkBox);
         checkBox.setTag(pantryItem.getId());
-
-
-
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,9 +69,7 @@ public class PantryListingAdapter extends ArrayAdapter<PantryItem> {
         return row;
     }
 
-    public Set<Integer> getCheckedPantryItems() {
-        return checkedPantryItems;
-    }
+
 
 }
 

@@ -75,6 +75,7 @@ public class PantryListingFragment extends Fragment {
                     return;
                 }
                 SmartGroceryDBHelper.getInstance(getActivity().getApplicationContext()).deletePantryItems(checkedPantryItems);
+               // dbHelper.deletePantryItems(checkedPantryItems);
                 Toast.makeText(v.getContext(), checkedPantryItems.size() + " item(s) deleted", Toast.LENGTH_SHORT).show();
                 checkedPantryItems.clear();
                 onResume();

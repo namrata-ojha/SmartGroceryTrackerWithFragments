@@ -115,6 +115,11 @@ public class PantryDbUtils {
         Log.d("PantryDbUtils", "Pantry item " + item.getName() + " updated with new values:"+newValues);
     }
 
+    /**
+     * Deleting the item from Add/Modify page
+     * @param db
+     * @param item
+     */
     public static void deletePantryItem(SQLiteDatabase db,PantryItem item) {
         try {
             int result = db.delete(PANTRY_TABLE_NAME, Constants.ID_COLUMN + "=" + item.getId(), null);
@@ -127,6 +132,11 @@ public class PantryDbUtils {
 
     }
 
+    /**
+     * Deleting an item when checked
+     * @param db
+     * @param pantryItems
+     */
     public static void deletePantryItems(SQLiteDatabase db, Set<Integer> pantryItems) {
         String args = TextUtils.join(", ", pantryItems);
         final String SQL = String.format("DELETE FROM " + PANTRY_TABLE_NAME + " WHERE "+ Constants.ID_COLUMN + " IN (%s);", args);

@@ -43,11 +43,6 @@ public class WelcomeMainActivity extends FragmentActivity {
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
             }
-
-
-
-
-
             @Override
             public void onPageSelected(int arg0) {
                 //  bar.setSelectedNavigationItem(arg0);
@@ -116,9 +111,6 @@ public class WelcomeMainActivity extends FragmentActivity {
                 EXPIRATION_JOB_INTERVAL, pendingIntent);
 
         isExpiryNotificatonRegistered = true;
-
-
-
     }
 
     public void changeFragment(int pos){

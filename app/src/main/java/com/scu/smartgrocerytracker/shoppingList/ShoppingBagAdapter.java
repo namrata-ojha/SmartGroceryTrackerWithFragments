@@ -71,25 +71,6 @@ public class ShoppingBagAdapter extends ArrayAdapter<Items> {
         }
 
 
-//        Button addButton = (Button) row.findViewById(R.id.buttonAddItem);
-//        addButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//            Items item=   ItemListingActivity.addButtonClicks();
-//                itemNameToAdd = item.getItemName();
-//               categoryToAdd = item.getItemCategory();
-//                itemID = item.getId();
-//                quantity = 1;
-//
-//                    dbHelper.insertItemInShoppingList(dbHelper.getDB(), itemNameToAdd, categoryToAdd, quantity, itemID);
-//                    Log.d("itemNameToAdd", "itemNameToAdd");
-//                Log.d("categoryToAdd", "categoryToAdd");
-//                    ItemListingAdpater.buttonClick = false;
-//
-//               Log.d("Button Value","true");
-//            }
-//        });
-
 
         return row;
     }

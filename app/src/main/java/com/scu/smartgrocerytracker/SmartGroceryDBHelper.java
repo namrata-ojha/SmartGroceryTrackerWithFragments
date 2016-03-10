@@ -68,21 +68,6 @@ public class SmartGroceryDBHelper extends SQLiteOpenHelper {
     }
 
 
-    //need to insert the data for categories and any other table if needed
-    private void initialize(SQLiteDatabase db) {
-        List<Category> categories = new ArrayList<>();
-        Category vegetables = new Category("Vegetables", "vegetables.jpg");
-        Category fruits = new Category("Fruits", "fruits.jpg");
-        Category diary = new Category("Dairy", "diary.jpg");
-        categories.add(vegetables);
-        categories.add(fruits);
-        categories.add(diary);
-
-        for (Category c : categories) {
-            insert(db, c);
-        }
-    }
-
     /**
      * This method initializes the category table
      */
@@ -445,10 +430,11 @@ public class SmartGroceryDBHelper extends SQLiteOpenHelper {
 
     public void deleteByNameFromShoppingList(String name) {
         SQLiteDatabase db = getWritableDatabase();
-        // db.execSQL("DELETE FROM "+Constants.SHOPPINGLIST_TABLE_NAME+" WHERE "+Constants.SHOOPINGLIST_ITEM_ID_REFRENCE_COLUMN+"="+id);
+
         db.execSQL("DELETE FROM " + Constants.SHOPPINGLIST_TABLE_NAME + " WHERE " + Constants.SHOPPINGLIST_ITEM_NAME_COLUMN + "='" + name + "'");
-        db.close();
-        // db.delete(Constants.SHOPPINGLIST_TABLE_NAME, Constants.SHOPPINGLIST_ITEM_NAME_COLUMN+"="+name+"", null);
+     //code fix-Aparna
+     //   db.close();
+
     }
 
 
