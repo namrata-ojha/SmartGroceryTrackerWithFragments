@@ -22,32 +22,10 @@ import com.scu.smartgrocerytracker.SmartGroceryDBHelper;
 import com.scu.smartgrocerytracker.constants.Constants;
 
 import java.util.List;
-import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 import java.util.ArrayList;
 
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.Bundle;
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
-import android.speech.RecognizerIntent;
-import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class ItemListingActivity extends AppCompatActivity {
     private static final int REQUEST_CODE = 1234;
@@ -153,7 +131,7 @@ public class ItemListingActivity extends AppCompatActivity {
         if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
 
             match_text_dialog = new Dialog(ItemListingActivity.this);
-            match_text_dialog.setContentView(R.layout.dialog_matches_frag);
+            match_text_dialog.setContentView(R.layout.speech_text_dialog_matches_frag);
             match_text_dialog.setTitle("Select Matching Text");
             textlist = (ListView) match_text_dialog.findViewById(R.id.list);
             matches_text = data

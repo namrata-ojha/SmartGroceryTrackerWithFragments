@@ -14,6 +14,7 @@ import com.scu.smartgrocerytracker.R;
 import com.scu.smartgrocerytracker.SmartGroceryDBHelper;
 import com.scu.smartgrocerytracker.constants.Constants;
 import com.scu.smartgrocerytracker.items.ItemListingActivity;
+import com.scu.smartgrocerytracker.pantry.PantryListingAdapter;
 
 import java.util.List;
 
@@ -23,7 +24,8 @@ import java.util.List;
  */
 public class CategoryListingFragment extends Fragment {
     SmartGroceryDBHelper dbHelper;
-
+    List<Category> categories;
+    ListView listView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -31,10 +33,10 @@ public class CategoryListingFragment extends Fragment {
         Log.d("Category Fragment ", "Called");
 
 
-        ListView listView = (ListView) rootView.findViewById(R.id.categoryListView);
+        listView = (ListView) rootView.findViewById(R.id.categoryListView);
         dbHelper = SmartGroceryDBHelper.getInstance(getActivity().getApplicationContext());
         //dbHelper.getWritableDatabase();
-        List<Category> categories = dbHelper.getAll();
+        categories = dbHelper.getAll();
         for (Category c : categories) {
             Log.d("category from list", c.getCategoryName().toString());
 
@@ -52,5 +54,20 @@ public class CategoryListingFragment extends Fragment {
             }
         });
         return rootView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+       // final ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.category_listing, container, false);
+        dbHelper = SmartGroceryDBHelper.getInstance(getActivity().getApplicationContext());
+        categories = dbHelper.getAll();
+        for (Category c : categories) {
+            Log.d("category from list2", c.getCategoryName().toString());
+
+        }
+        listView.setAdapter(new CategoryListingAdapter(getActivity(), R.layout.category_list_row, categories));
+
+
     }
 }
