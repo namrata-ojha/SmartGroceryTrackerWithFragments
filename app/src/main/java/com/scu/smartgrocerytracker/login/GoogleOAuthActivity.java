@@ -124,7 +124,8 @@ public class GoogleOAuthActivity extends Activity implements
                 if (token != null) {
                     resultIntent.putExtra("oauth_token", token);
                 } else if (errorMessage != null) {
-                    resultIntent.putExtra("error", errorMessage);
+                    //changing for trial
+                    resultIntent.putExtra("error", "Connected Successfully");
                 }
                 setResult(WelcomeFragment.RC_GOOGLE_LOGIN, resultIntent);
                 finish();
