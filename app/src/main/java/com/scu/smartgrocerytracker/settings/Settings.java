@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.scu.smartgrocerytracker.MapView;
 import com.scu.smartgrocerytracker.R;
 
 /**
@@ -55,6 +56,19 @@ public class Settings extends Fragment {
                         "mailto", "nojha@scu.edu,nfernandes@scu.edu,aganesh@scu.edu", null));
                 emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Report Bug");
                 startActivity(Intent.createChooser(emailIntent, "Send email..."));
+
+            }
+        });
+
+
+        Button buttonMaps = (Button) rootView.findViewById(R.id.buttonMaps);
+
+        buttonMaps.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View arg0) {
+                Intent myIntent = new Intent(getActivity() ,MapView.class);
+                // myIntent.putExtra("key", value); //Optional parameters
+                startActivity(myIntent);
 
             }
         });

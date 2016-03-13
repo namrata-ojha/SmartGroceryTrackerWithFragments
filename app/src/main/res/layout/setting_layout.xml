@@ -42,4 +42,13 @@
         android:layout_margin="5dp"
         android:layout_weight="0.18"
         android:background="@drawable/uninstall" />
+
+    <Button
+        android:id="@+id/buttonMaps"
+        android:layout_width="186dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="5dp"
+        android:text="Maps"
+        android:layout_weight="0.18" />
 </LinearLayout>
