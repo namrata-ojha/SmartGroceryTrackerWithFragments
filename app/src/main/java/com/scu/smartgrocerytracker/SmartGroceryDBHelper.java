@@ -3,6 +3,7 @@ package com.scu.smartgrocerytracker;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -55,6 +56,10 @@ public class SmartGroceryDBHelper extends SQLiteOpenHelper {
 
         //Initialize pantry list
         db.execSQL(PantryDbUtils.PANTRY_TABLE_CREATE);
+
+
+        //for notes
+        db.execSQL(Constants.table_notes);
     }
 
     public SQLiteDatabase getDB() {
@@ -437,5 +442,75 @@ public class SmartGroceryDBHelper extends SQLiteOpenHelper {
 
     }
 
+    public static final String KEY_TITLE = "title";
+    public static final String KEY_DATE = "date";
+    public static final String KEY_BODY = "body";
+    public static final String KEY_ROWID = "_id";
+    private static final String DATABASE_TABLE = "notes";
 
+//     * @param title the title of the note
+//     * @param body the body of the note
+//     * @return rowId or -1 if failed
+
+    public long createNote(String title, String body, String date) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues initialValues = new ContentValues();
+        initialValues.put(KEY_TITLE, title);
+        initialValues.put(KEY_BODY, body);
+        initialValues.put(KEY_DATE, date);
+
+        return db.insert(DATABASE_TABLE, null, initialValues);
+    }
+
+
+//     * @param rowId id of note to delete
+//     * @return true if deleted, false otherwise
+
+    public boolean deleteNote(long rowId) {
+        SQLiteDatabase db = getWritableDatabase();
+
+        return db.delete(DATABASE_TABLE, KEY_ROWID + "=" + rowId, null) > 0;
+    }
+
+
+    //     * @return Cursor over all notes
+//     */
+    public Cursor fetchAllNotes() {
+        SQLiteDatabase db = getWritableDatabase();
+        return db.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_TITLE,
+                KEY_BODY,KEY_DATE}, null, null, null, null, null);
+    }
+
+    /**
+     * Return a Cursor positioned at the note that matches the given rowId
+     */
+    public Cursor fetchNote(long rowId) throws SQLException {
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor mCursor =
+
+                db.query(true, DATABASE_TABLE, new String[]{KEY_ROWID,
+                                KEY_TITLE, KEY_BODY, KEY_DATE}, KEY_ROWID + "=" + rowId, null,
+                        null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+
+    }
+
+    /**
+     * Update the note using the details provided.
+     */
+    public boolean updateNote(long rowId, String title, String body,String date) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues args = new ContentValues();
+        args.put(KEY_TITLE, title);
+        args.put(KEY_BODY, body);
+
+        //This lines is added for personal reason
+        args.put(KEY_DATE, date);
+
+        //One more parameter is added for data
+        return db.update(DATABASE_TABLE, args, KEY_ROWID + "=" + rowId, null) > 0;
+    }
 }
