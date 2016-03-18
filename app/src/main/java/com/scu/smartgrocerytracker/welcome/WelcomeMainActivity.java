@@ -2,49 +2,19 @@ package com.scu.smartgrocerytracker.welcome;
 
 import android.app.ActionBar;
 import android.app.AlarmManager;
-import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.PendingIntent;
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.IntentSender;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
-import com.facebook.AccessToken;
-import com.facebook.AccessTokenTracker;
-import com.facebook.CallbackManager;
-import com.facebook.login.LoginManager;
-import com.facebook.login.widget.LoginButton;
-import com.firebase.client.AuthData;
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.google.android.gms.auth.GoogleAuthException;
-import com.google.android.gms.auth.GoogleAuthUtil;
-import com.google.android.gms.auth.UserRecoverableAuthException;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.Scopes;
-import com.google.android.gms.common.SignInButton;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.plus.Plus;
 import com.scu.smartgrocerytracker.R;
 import com.scu.smartgrocerytracker.pantry.ExpiryNotificationService;
 
 import org.apache.commons.lang3.time.DateUtils;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 
 public class WelcomeMainActivity extends FragmentActivity {

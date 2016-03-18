@@ -86,6 +86,14 @@ public class Constants {
             Constants.SHOOPINGLIST_ITEM_ID_REFRENCE_COLUMN, Constants.SHOPPINGLIST_ITEM_IMAGE_PATH, Constants.SHOOPINGLIST_ITEM_ID_REFRENCE_COLUMN,
             Constants.ITEM_TABLE_NAME, Constants.ITEM_ID_COLUMN);
 
+    public static final String KEY_TITLE = "title";
+    public static final String KEY_DATE = "date";
+    public static final String KEY_BODY = "body";
+    public static final String KEY_ROWID = "_id";
+    //
+    public static final String table_notes =
+            "create table notes (_id integer primary key autoincrement, "
+                    + "title text not null, body text not null, date text not null);";
 
     //Preferred store table
 

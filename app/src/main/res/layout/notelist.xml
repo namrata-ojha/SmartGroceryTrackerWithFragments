@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_purple">
+   
+    <TextView
+        android:id="@+id/textViewTop"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:paddingBottom="35dp"
+        android:background="@android:color/holo_purple" />
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btmLayout"
+        android:layout_below="@+id/textViewTop"
+        android:background="@android:color/holo_purple"
+        android:divider="#D3D3D3"
+        android:dividerHeight="1sp" 
+        android:footerDividersEnabled="true" />
+
+    <LinearLayout
+        android:id="@+id/btmLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"        
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/holo_purple">
+
+    	<Button
+    	    android:id="@+id/addnotebutton"
+    	    android:layout_width="50dp"
+    	    android:layout_height="71dp"
+    	    android:background="@drawable/add_notes" />
+
+    </LinearLayout>
+    
+    	
+</RelativeLayout> 
