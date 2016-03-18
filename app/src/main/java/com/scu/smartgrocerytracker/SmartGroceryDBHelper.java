@@ -13,6 +13,7 @@ import com.scu.smartgrocerytracker.constants.Constants;
 import com.scu.smartgrocerytracker.constants.Unit;
 import com.scu.smartgrocerytracker.db_helper.PantryDbUtils;
 import com.scu.smartgrocerytracker.items.Items;
+import com.scu.smartgrocerytracker.location.Place;
 import com.scu.smartgrocerytracker.pantry.PantryItem;
 
 import java.util.ArrayList;
@@ -56,6 +57,9 @@ public class SmartGroceryDBHelper extends SQLiteOpenHelper {
 
         //Initialize pantry list
         db.execSQL(PantryDbUtils.PANTRY_TABLE_CREATE);
+
+        //create preferred store table
+        db.execSQL(Constants.PREF_STORE_TABLE_CREATE);
     }
 
     public SQLiteDatabase getDB() {
@@ -190,6 +194,19 @@ public class SmartGroceryDBHelper extends SQLiteOpenHelper {
         db.insert(Constants.CATEGORY_TABLE_NAME, null, newValues);
     }
 
+//insert prefered store
+public void insertPrefStore(Place place) {
+    SQLiteDatabase db = this.getWritableDatabase();
+    ContentValues newValues = new ContentValues();
+    newValues.put(Constants.PREF_STORE_NAME_COL, place.name);
+    newValues.put(Constants.PREF_STORE_ADDR_COL, place.formatted_address);
+    newValues.put(Constants.PREF_STORE_PHONE_COL, place.formatted_phone_number);
+    newValues.put(Constants.PREF_STORE_LAT_COL, place.geometry.location.lat);
+    newValues.put(Constants.PREF_STORE_LNG_COL, place.geometry.location.lng);
+
+
+    db.insert(Constants.PREF_STORE_TABLE_NAME, null, newValues);
+}
 
     //insert rows in Item table
     public void insertItem(SQLiteDatabase db, Items item) {
@@ -213,6 +230,37 @@ public class SmartGroceryDBHelper extends SQLiteOpenHelper {
         newValues.put(Constants.SHOOPINGLIST_ITEM_ID_REFRENCE_COLUMN, itemRefrenceId);
         db.insert(Constants.SHOPPINGLIST_TABLE_NAME, null, newValues);
     }
+
+    //list all preferred store
+    public List<Place> getAllPreferredStores() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String where = null;
+        String whereArgs[] = null;
+        String groupBy = null;
+        String having = null;
+        String order = null;
+        String[] resultColumns = {Constants.PREF_STORE_ID, Constants.PREF_STORE_NAME_COL, Constants.PREF_STORE_ADDR_COL,Constants.PREF_STORE_PHONE_COL,Constants.PREF_STORE_LAT_COL,Constants.PREF_STORE_LNG_COL};
+        Cursor cursor = db.query(Constants.PREF_STORE_TABLE_NAME, resultColumns, where, whereArgs, groupBy, having, order);
+        List<Place> places = new ArrayList<>();
+        while (cursor.moveToNext()) {
+            int id = cursor.getInt(0);
+            String storeName = cursor.getString(1);
+            String storeAddr = cursor.getString(2);
+            String storePhoneNum = cursor.getString(3);
+            double lat = cursor.getDouble(4);
+            double lng = cursor.getDouble(5);
+            Place place = new Place();
+            place.name = storeName;
+            place.formatted_address = storeAddr;
+            place.formatted_phone_number = storePhoneNum;
+            place.geometry.location.lat = lat;
+            place.geometry.location.lng = lng;
+            places.add(place);
+                    }
+        return places;
+
+    }
+
 
 
     //get all rows from database and return List<Category>

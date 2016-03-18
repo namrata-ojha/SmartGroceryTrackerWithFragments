@@ -105,7 +105,7 @@ public class Constants {
                     "  %s text," +
                     "  %s double," +
                     "  %s double);",
-            Constants.PREF_STORE_TABLE_NAME, Constants.PREF_STORE_ID, Constants.PREF_STORE_TABLE_NAME,
+            Constants.PREF_STORE_TABLE_NAME, Constants.PREF_STORE_ID, Constants.PREF_STORE_NAME_COL,
             Constants.PREF_STORE_ADDR_COL, Constants.PREF_STORE_PHONE_COL,
             Constants.PREF_STORE_LAT_COL, Constants.PREF_STORE_LNG_COL);
 

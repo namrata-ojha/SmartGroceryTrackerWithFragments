@@ -148,16 +148,12 @@ public class SinglePlaceActivity extends Activity {
                         // Check for all possible status
                         if(status.equals("OK")){
                             if (placeDetails.result != null) {
-//                                String name = placeDetails.result.name;
-//                                String address = placeDetails.result.formatted_address;
-//                                String phone = placeDetails.result.formatted_phone_number;
-//                                String latitude = Double.toString(placeDetails.result.geometry.location.lat);
-//                                String longitude = Double.toString(placeDetails.result.geometry.location.lng);
-                                String name = "Walmart";
-                                String address = "880 E Fremont Ave";
-                                String phone = "2018758108";
-                                String latitude = Double.toString(13.275);
-                                String longitude = Double.toString(12.1111);
+                                String name = placeDetails.result.name;
+                                String address = placeDetails.result.formatted_address;
+                                String phone = placeDetails.result.formatted_phone_number;
+                                String latitude = Double.toString(placeDetails.result.geometry.location.lat);
+                                String longitude = Double.toString(placeDetails.result.geometry.location.lng);
+
 
                                 Log.d("Place ", name + address + phone + latitude + longitude);
 
