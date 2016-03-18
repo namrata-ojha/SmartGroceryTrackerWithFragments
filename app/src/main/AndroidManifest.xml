@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.scu.smartgrocerytracker">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -11,21 +13,14 @@
         android:allowBackup="true"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
-
-
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAc1dJYxpC9ybqNhrZFUMMQRWd9fbpOSr8" />
-        <!--AIzaSyDPWagttLshhCvxCrQAW3uaOrlahXpSI_w-->
+            android:value="AIzaSyCjAxL3XdNBSgCAZ_1n4kixDJ5Y3eRLvrs" />
 
-        <activity android:name=".MapView"
+        <activity
+            android:name=".MapView"
             android:label="Mapview"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
-
-
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".welcome.WelcomeMainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -53,7 +48,8 @@
         <activity
             android:name=".pantry.UpdatePantryActivity"
             android:label="@string/title_activity_update_pantry"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -61,7 +57,11 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-
+        <activity android:name=".location.PreferedLocationActivity" />
+        <activity
+            android:name=".location.SinglePlaceActivity"
+            android:label="@string/title_activity_single_place"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
