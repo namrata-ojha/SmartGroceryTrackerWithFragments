@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+
+    <TextView
+        android:layout_width="45dp"
+        android:layout_height="35dp"
+        android:text="History"
+        android:id="@+id/historyTitle"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.08"
+        android:capitalize="words"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="Vegetables"
+        android:id="@+id/textVeggie"
+        android:layout_marginTop="54dp"
+        android:layout_below="@+id/historyTitle"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="Fruits"
+        android:id="@+id/textFruits"
+        android:layout_below="@+id/textVeggie"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="Dairy"
+        android:id="@+id/textDairy"
+        android:layout_below="@+id/textFruits"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="Uncategorised Items"
+        android:id="@+id/textUncategorised"
+        android:layout_below="@+id/textDairy"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="New Text"
+        android:id="@+id/amountVeggie"
+        android:layout_above="@+id/amountFruits"
+        android:layout_toRightOf="@+id/historyTitle"
+        android:layout_toEndOf="@+id/historyTitle" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="New Text"
+        android:id="@+id/amountFruits"
+        android:layout_above="@+id/amountDairy"
+        android:layout_alignLeft="@+id/amountVeggie"
+        android:layout_alignStart="@+id/amountVeggie" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="New Text"
+        android:id="@+id/amountDairy"
+        android:layout_above="@+id/textUncategorised"
+        android:layout_alignLeft="@+id/amountFruits"
+        android:layout_alignStart="@+id/amountFruits" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="New Text"
+        android:id="@+id/amountUncategorised"
+        android:layout_below="@+id/amountDairy"
+        android:layout_alignLeft="@+id/amountDairy"
+        android:layout_alignStart="@+id/amountDairy" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="Total Amount spent since last reset"
+        android:id="@+id/textView9"
+        android:layout_above="@+id/amountVeggie"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="35dp"
+    android:text="Reset"
+    android:id="@+id/buttonVeggie"
+    android:layout_toRightOf="@+id/amountVeggie"
+    android:layout_toEndOf="@+id/amountVeggie"
+    android:layout_above="@+id/amountFruits"
+    android:layout_alignTop="@+id/amountVeggie"
+        android:onClick="clearVeggiesTotal" />
+
+
+    <Button
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="35dp"
+    android:text="Reset"
+    android:id="@+id/buttonFruits"
+    android:layout_toRightOf="@+id/amountFruits"
+    android:layout_toEndOf="@+id/amountFruits"
+    android:layout_above="@+id/amountDairy"
+    android:layout_alignTop="@+id/amountFruits"
+        android:onClick="clearFruitsTotal" />
+
+    <Button
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="35dp"
+    android:text="Reset"
+    android:id="@+id/buttonDairy"
+    android:layout_toRightOf="@+id/amountDairy"
+    android:layout_toEndOf="@+id/amountDairy"
+    android:layout_above="@+id/amountUncategorised"
+    android:layout_alignTop="@+id/amountDairy"
+        android:onClick="clearDairyTotal" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="Reset"
+        android:id="@+id/buttonUncategorised"
+        android:layout_toRightOf="@+id/amountUncategorised"
+        android:layout_toEndOf="@+id/amountUncategorised"
+
+        android:layout_alignTop="@+id/amountUncategorised"
+        android:layout_alignBottom="@+id/amountUncategorised"
+        android:onClick="clearUncategorisedTotal" />
+
+</RelativeLayout>

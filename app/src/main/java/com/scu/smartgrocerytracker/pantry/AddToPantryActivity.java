@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.scu.smartgrocerytracker.BarcodeScanner.BarcodeFragment;
@@ -33,6 +34,7 @@ public class AddToPantryActivity extends AppCompatActivity {
     private Spinner unitSpinner;
     String productName;
 private  EditText editTextPrice;
+    double costofBarcodeProdcut=0;                  // By Noel
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +43,14 @@ private  EditText editTextPrice;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // for setting text price from barcode by Namrata
+
         editTextPrice=(EditText) findViewById(R.id.priceEditText);
         itemNameView = (TextView) findViewById(R.id.itemNameTextView);
         categoryView = (TextView) findViewById(R.id.categoryTextView);
+
+        // for history: Noel
+
+
         //Get Item name and category from Shopping list activity
         Bundle bundle = getIntent().getExtras();
 
@@ -57,6 +64,8 @@ private  EditText editTextPrice;
                 productName = (String) bundle.getSerializable("product");
                 Log.d("productNamePantry", productName);
                 Double productCost = (Double) bundle.getSerializable("cost");
+
+                costofBarcodeProdcut=productCost;              // line added by Noel
                 itemNameView.setText(productName);
                 editTextPrice.setText(Double.toString(productCost));
                 categoryView.setText("Uncategorized");
@@ -133,6 +142,38 @@ private  EditText editTextPrice;
                     Log.d("AddToPantryActivity", "Error parsing date");
                     e.printStackTrace();
                 }
+
+                //By Noel for History:
+
+                if(item!=null) {
+
+                    switch (item.getItemCategory()) {
+                        case "Vegetables":
+
+                            Constants.Vegetables_total += (price * totalQuantity);
+                            break;
+
+                        case "Fruits":
+
+                            Constants.Fruits_total += (price * totalQuantity);
+                            break;
+
+                        case "Dairy":
+
+                            Constants.Dairy_total += (price * totalQuantity);
+                            break;
+
+
+
+
+
+                    }
+                }
+                else {
+                    Constants.Uncategorized_total += costofBarcodeProdcut;
+                }
+
+
 
                 //Add to Pantry
                 SmartGroceryDBHelper.getInstance(getApplicationContext()).addToPantry(pantryItem);

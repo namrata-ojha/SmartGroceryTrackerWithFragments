@@ -110,4 +110,13 @@ public class Constants {
             Constants.PREF_STORE_LAT_COL, Constants.PREF_STORE_LNG_COL);
 
 
+    // constants for history by Noel
+
+
+    public static  double Uncategorized_total = 0;
+    public static  double Vegetables_total = 0;
+    public static  double Fruits_total = 0;
+    public static  double Dairy_total=0;
+
+
 }

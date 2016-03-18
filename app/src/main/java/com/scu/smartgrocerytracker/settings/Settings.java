@@ -13,6 +13,7 @@ import android.widget.Button;
 
 import com.scu.smartgrocerytracker.MapView;
 import com.scu.smartgrocerytracker.R;
+import com.scu.smartgrocerytracker.historygrocery.historyy;
 import com.scu.smartgrocerytracker.SmartGroceryDBHelper;
 import com.scu.smartgrocerytracker.items.Items;
 
@@ -77,6 +78,18 @@ public class Settings extends Fragment {
 
             public void onClick(View arg0) {
                 Intent myIntent = new Intent(getActivity() ,MapView.class);
+                // myIntent.putExtra("key", value); //Optional parameters
+                startActivity(myIntent);
+
+            }
+        });
+
+        Button buttonHistory = (Button) rootView.findViewById(R.id.buttonHistory);
+
+        buttonHistory.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View arg0) {
+                Intent myIntent = new Intent(getActivity(),historyy.class);
                 // myIntent.putExtra("key", value); //Optional parameters
                 startActivity(myIntent);
 
