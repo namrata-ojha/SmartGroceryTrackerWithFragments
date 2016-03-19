@@ -33,4 +33,5 @@
     <string name="delete_menu_noteedit">Delete</string>
     <string name="notes">Notes</string>
     <string name="maps">Maps</string>
+    <string name="recipe">Recipe</string>
 </resources>

@@ -4,16 +4,21 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -57,7 +62,17 @@ public class NoteEdit extends Activity {
 
         mDateText.setText("" + curDate);
 
+        Button delete = (Button) findViewById(R.id.buttondelete);
 
+        delete.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View arg0) {
+//                AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+//                mDbHelper.deleteNote(info.id);
+//              //  fillData();
+
+            }
+        });
         mRowId = (savedInstanceState == null) ? null :
                 (Long) savedInstanceState.getSerializable(mDbHelper.KEY_ROWID);
         if (mRowId == null) {

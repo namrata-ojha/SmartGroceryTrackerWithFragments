@@ -9,7 +9,7 @@ public class Constants {
     public static final String CATEGORY_FRUITS_NAME = "Fruits";
     public static final String CATEGORY_DAIRY_NAME = "Dairy";
 
-    //Settings constants
+    //Recipe constants
     public static final String EXPIRY_NOTIFICATION_DAYS_PROPERTY = "edu.scu.smartgrocerytracker.expiryNotificationDays";
 
 
