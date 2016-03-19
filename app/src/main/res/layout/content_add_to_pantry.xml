@@ -42,6 +42,7 @@
         android:layout_alignRight="@+id/textView"
         android:layout_alignEnd="@+id/textView" />
 
+     <!--take quantity from here -->
     <EditText
         android:layout_width="50dp"
         android:layout_height="wrap_content"
@@ -63,6 +64,7 @@
         android:layout_alignLeft="@+id/savebutton"
         android:layout_alignStart="@+id/savebutton" />
 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -73,6 +75,8 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="29dp" />
 
+
+    <!--use this one for category -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -92,6 +96,8 @@
         android:layout_alignLeft="@+id/expiryTextView"
         android:layout_alignStart="@+id/expiryTextView" />
 
+
+    <!--take price from here-->
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

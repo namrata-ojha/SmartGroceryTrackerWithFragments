@@ -13,6 +13,7 @@ import com.scu.smartgrocerytracker.constants.Constants;
 import com.scu.smartgrocerytracker.constants.Unit;
 import com.scu.smartgrocerytracker.db_helper.PantryDbUtils;
 import com.scu.smartgrocerytracker.items.Items;
+import com.scu.smartgrocerytracker.location.Place;
 import com.scu.smartgrocerytracker.pantry.PantryItem;
 
 import java.util.ArrayList;
@@ -57,9 +58,8 @@ public class SmartGroceryDBHelper extends SQLiteOpenHelper {
         //Initialize pantry list
         db.execSQL(PantryDbUtils.PANTRY_TABLE_CREATE);
 
-
-        //for notes
-        db.execSQL(Constants.table_notes);
+        //create preferred store table
+        db.execSQL(Constants.PREF_STORE_TABLE_CREATE);
     }
 
     public SQLiteDatabase getDB() {
@@ -194,6 +194,19 @@ public class SmartGroceryDBHelper extends SQLiteOpenHelper {
         db.insert(Constants.CATEGORY_TABLE_NAME, null, newValues);
     }
 
+//insert prefered store
+public void insertPrefStore(Place place) {
+    SQLiteDatabase db = this.getWritableDatabase();
+    ContentValues newValues = new ContentValues();
+    newValues.put(Constants.PREF_STORE_NAME_COL, place.name);
+    newValues.put(Constants.PREF_STORE_ADDR_COL, place.formatted_address);
+    newValues.put(Constants.PREF_STORE_PHONE_COL, place.formatted_phone_number);
+    newValues.put(Constants.PREF_STORE_LAT_COL, place.geometry.location.lat);
+    newValues.put(Constants.PREF_STORE_LNG_COL, place.geometry.location.lng);
+
+
+    db.insert(Constants.PREF_STORE_TABLE_NAME, null, newValues);
+}
 
     //insert rows in Item table
     public void insertItem(SQLiteDatabase db, Items item) {
@@ -217,6 +230,37 @@ public class SmartGroceryDBHelper extends SQLiteOpenHelper {
         newValues.put(Constants.SHOOPINGLIST_ITEM_ID_REFRENCE_COLUMN, itemRefrenceId);
         db.insert(Constants.SHOPPINGLIST_TABLE_NAME, null, newValues);
     }
+
+    //list all preferred store
+    public List<Place> getAllPreferredStores() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String where = null;
+        String whereArgs[] = null;
+        String groupBy = null;
+        String having = null;
+        String order = null;
+        String[] resultColumns = {Constants.PREF_STORE_ID, Constants.PREF_STORE_NAME_COL, Constants.PREF_STORE_ADDR_COL,Constants.PREF_STORE_PHONE_COL,Constants.PREF_STORE_LAT_COL,Constants.PREF_STORE_LNG_COL};
+        Cursor cursor = db.query(Constants.PREF_STORE_TABLE_NAME, resultColumns, where, whereArgs, groupBy, having, order);
+        List<Place> places = new ArrayList<>();
+        while (cursor.moveToNext()) {
+            int id = cursor.getInt(0);
+            String storeName = cursor.getString(1);
+            String storeAddr = cursor.getString(2);
+            String storePhoneNum = cursor.getString(3);
+            double lat = cursor.getDouble(4);
+            double lng = cursor.getDouble(5);
+            Place place = new Place();
+            place.name = storeName;
+            place.formatted_address = storeAddr;
+            place.formatted_phone_number = storePhoneNum;
+            place.geometry.location.lat = lat;
+            place.geometry.location.lng = lng;
+            places.add(place);
+                    }
+        return places;
+
+    }
+
 
 
     //get all rows from database and return List<Category>
@@ -448,69 +492,4 @@ public class SmartGroceryDBHelper extends SQLiteOpenHelper {
     public static final String KEY_ROWID = "_id";
     private static final String DATABASE_TABLE = "notes";
 
-//     * @param title the title of the note
-//     * @param body the body of the note
-//     * @return rowId or -1 if failed
-
-    public long createNote(String title, String body, String date) {
-        SQLiteDatabase db = getWritableDatabase();
-        ContentValues initialValues = new ContentValues();
-        initialValues.put(KEY_TITLE, title);
-        initialValues.put(KEY_BODY, body);
-        initialValues.put(KEY_DATE, date);
-
-        return db.insert(DATABASE_TABLE, null, initialValues);
-    }
-
-
-//     * @param rowId id of note to delete
-//     * @return true if deleted, false otherwise
-
-    public boolean deleteNote(long rowId) {
-        SQLiteDatabase db = getWritableDatabase();
-
-        return db.delete(DATABASE_TABLE, KEY_ROWID + "=" + rowId, null) > 0;
-    }
-
-
-    //     * @return Cursor over all notes
-//     */
-    public Cursor fetchAllNotes() {
-        SQLiteDatabase db = getWritableDatabase();
-        return db.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_TITLE,
-                KEY_BODY,KEY_DATE}, null, null, null, null, null);
-    }
-
-    /**
-     * Return a Cursor positioned at the note that matches the given rowId
-     */
-    public Cursor fetchNote(long rowId) throws SQLException {
-        SQLiteDatabase db = getWritableDatabase();
-        Cursor mCursor =
-
-                db.query(true, DATABASE_TABLE, new String[]{KEY_ROWID,
-                                KEY_TITLE, KEY_BODY, KEY_DATE}, KEY_ROWID + "=" + rowId, null,
-                        null, null, null, null);
-        if (mCursor != null) {
-            mCursor.moveToFirst();
-        }
-        return mCursor;
-
-    }
-
-    /**
-     * Update the note using the details provided.
-     */
-    public boolean updateNote(long rowId, String title, String body,String date) {
-        SQLiteDatabase db = getWritableDatabase();
-        ContentValues args = new ContentValues();
-        args.put(KEY_TITLE, title);
-        args.put(KEY_BODY, body);
-
-        //This lines is added for personal reason
-        args.put(KEY_DATE, date);
-
-        //One more parameter is added for data
-        return db.update(DATABASE_TABLE, args, KEY_ROWID + "=" + rowId, null) > 0;
-    }
 }
