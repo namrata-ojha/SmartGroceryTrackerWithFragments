@@ -2,12 +2,26 @@ package com.scu.smartgrocerytracker.constants;
 
 public class Constants {
     //General constants
-    //General constants
     public static final String CATEGORY_NAME = "category_name";
     public static final String IMAGE_NAME = "IMAGE_NAME";
     public static final String CATEGORY_VEGETABLES_NAME = "Vegetables";
     public static final String CATEGORY_FRUITS_NAME = "Fruits";
     public static final String CATEGORY_DAIRY_NAME = "Dairy";
+
+    //History constants
+    public static  double Uncategorized_total = 0;
+    public static  double Vegetables_total = 0;
+    public static  double Fruits_total = 0;
+    public static  double Dairy_total=0;
+
+    //Pref Store Constants
+    public static final String PREF_STORE_TABLE_NAME = "preferred_store";
+    public static final String PREF_STORE_ID = "preferred_store_id";
+    public static final String PREF_STORE_NAME_COL = "store_name";
+    public static final String PREF_STORE_ADDR_COL = "store_addr";
+    public static final String PREF_STORE_PHONE_COL = "store_phnum";
+    public static final String PREF_STORE_LAT_COL = "store_lat";
+    public static final String PREF_STORE_LNG_COL = "store_long";
 
     //Recipe constants
     public static final String EXPIRY_NOTIFICATION_DAYS_PROPERTY = "edu.scu.smartgrocerytracker.expiryNotificationDays";
@@ -59,6 +73,20 @@ public class Constants {
     public static final String SHOOPINGLIST_ITEM_QUANTITY_COLUMN = "shopping_item_quantity";
     public static final String SHOPPINGLIST_ITEM_IMAGE_PATH = "image_path";
     public static final String SHOOPINGLIST_ITEM_ID_REFRENCE_COLUMN = "shopping_item_id_reference";
+
+    //Preferred store table
+
+    public static final String PREF_STORE_TABLE_CREATE = String.format(
+            "CREATE TABLE %s (" +
+                    "  %s integer primary key autoincrement, " +
+                    "  %s text," +
+                    "  %s text," +
+                    "  %s text," +
+                    "  %s double," +
+                    "  %s double);",
+            Constants.PREF_STORE_TABLE_NAME, Constants.PREF_STORE_ID, Constants.PREF_STORE_NAME_COL,
+            Constants.PREF_STORE_ADDR_COL, Constants.PREF_STORE_PHONE_COL,
+            Constants.PREF_STORE_LAT_COL, Constants.PREF_STORE_LNG_COL);
 
     //Shopping List table
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.scu.smartgrocerytracker.location.SinglePlaceActivity">
+    tools:context="com.scu.smartgrocerytracker.location.PrefStoreActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -21,6 +21,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_single_place" />
+    <include layout="@layout/content_pref_store" />
 
 </android.support.design.widget.CoordinatorLayout>

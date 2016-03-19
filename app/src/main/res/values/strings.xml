@@ -34,4 +34,5 @@
     <string name="notes">Notes</string>
     <string name="maps">Maps</string>
     <string name="recipe">Recipe</string>
+    <string name="title_activity_pref_store">PrefStoreActivity</string>
 </resources>

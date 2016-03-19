@@ -44,13 +44,13 @@
         android:background="@drawable/uninstall" />
 
     <Button
-        android:id="@+id/buttonMaps"
-        android:layout_width="186dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="5dp"
-        android:text="Maps"
-        android:layout_weight="0.18" />
+        android:text="Preferred Store"
+        android:layout_weight="0.18"
+        android:id="@+id/prefStoreBtn" />
     <Button
         android:id="@+id/buttonHistory"
         android:layout_width="186dp"
@@ -59,4 +59,16 @@
         android:layout_margin="5dp"
         android:text="History"
         android:layout_weight="0.18" />
+        android:text="Preferred Store"
+        android:id="@+id/prefStoreBtn"
+        android:layout_gravity="center_horizontal" />
+
+    <!--<Button-->
+        <!--android:id="@+id/buttonMaps"-->
+        <!--android:layout_width="186dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:layout_margin="5dp"-->
+        <!--android:text="Maps"-->
+        <!--android:layout_weight="0.18" />-->
 </LinearLayout>
