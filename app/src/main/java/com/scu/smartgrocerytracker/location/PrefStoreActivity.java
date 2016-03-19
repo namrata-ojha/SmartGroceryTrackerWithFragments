@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,26 +30,12 @@ import java.util.List;
 public class PrefStoreActivity extends Fragment {
     SmartGroceryDBHelper dbHelper;
     ListView listView;
-    // creating GPS Class object
-    GPSTracker gps = new GPSTracker(getActivity());
-    double currentLat = gps.getLatitude();
-    double currentLng = gps.getLongitude();
-    String latitude = Double.toString(currentLat);
-    String longitude =Double.toString(currentLng);
-    String from =latitude +","+longitude;
 
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_pref_store);
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.content_pref_store, container, false);
-        //Uninstall the app
-//        Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
 
 
         Button search =(Button) rootView.findViewById(R.id.searchPrefStoreBtn);
@@ -69,6 +56,16 @@ public class PrefStoreActivity extends Fragment {
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        // creating GPS Class object
+                        GPSTracker gps = new GPSTracker(getActivity());
+                        double currentLat = gps.getLatitude();
+                        double currentLng = gps.getLongitude();
+                        String latitude = Double.toString(currentLat);
+                        String longitude =Double.toString(currentLng);
+                        String from =latitude +","+longitude;
+                        Log.i("Latitude",latitude);
+                        Log.i("Longitude",longitude);
+
                         Place itemClicked = (Place) parent.getItemAtPosition(position);
                         Double lat = itemClicked.getGeometry().getLocation().getLat();
                         Double lag = itemClicked.getGeometry().getLocation().getLng();
