@@ -26,8 +26,6 @@ import com.scu.smartgrocerytracker.R;
 
 public class PreferedLocationActivity extends Activity {
 
-double lat =37.368832;
-        double lng =-122.036346;
 
     // flag for Internet connection status
     Boolean isInternetPresent = false;

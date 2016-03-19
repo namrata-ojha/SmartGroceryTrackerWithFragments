@@ -29,6 +29,13 @@ import java.util.List;
 public class PrefStoreActivity extends Fragment {
     SmartGroceryDBHelper dbHelper;
     ListView listView;
+    // creating GPS Class object
+    GPSTracker gps = new GPSTracker(getActivity());
+    double currentLat = gps.getLatitude();
+    double currentLng = gps.getLongitude();
+    String latitude = Double.toString(currentLat);
+    String longitude =Double.toString(currentLng);
+    String from =latitude +","+longitude;
 
 //    @Override
 //    protected void onCreate(Bundle savedInstanceState) {
@@ -57,22 +64,21 @@ public class PrefStoreActivity extends Fragment {
                 listView.setAdapter(new ArrayAdapter<Place>(getActivity(), android.R.layout.simple_list_item_1, places));
 
 
-
                 ////by namrata just trial
 
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Place itemClicked = (Place) parent.getItemAtPosition(position);
-                      Double lat =  itemClicked.getGeometry().getLocation().getLat();
-                        Double lag =  itemClicked.getGeometry().getLocation().getLng();
+                        Double lat = itemClicked.getGeometry().getLocation().getLat();
+                        Double lag = itemClicked.getGeometry().getLocation().getLng();
                         itemClicked.getFormatted_address();
-                        String togo = Double.toString(lat)+","+Double.toString(lag);
-                        String from= "37.349,-121.95";
+                        String togo = Double.toString(lat) + "," + Double.toString(lag);
+                        //String from = "37.349,-121.95";
 
 //                        Toast toastNotConnected = Toast.makeText(getActivity().getApplicationContext(),  Double.toString(lat), Toast.LENGTH_LONG);
 //                        toastNotConnected.show();
-                        String map ="http://maps.google.com/maps?saddr="+from+"&daddr="+togo;
+                        String map = "http://maps.google.com/maps?saddr=" + from +"&daddr="+togo;
                         Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
                                 Uri.parse(map));
                         startActivity(intent);
