@@ -34,4 +34,5 @@
     <string name="notes">Notes</string>
     <string name="maps">Maps</string>
     <string name="recipe">Recipe</string>
+    <string name="history">History</string>
 </resources>

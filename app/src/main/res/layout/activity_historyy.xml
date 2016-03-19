@@ -10,5 +10,5 @@
     tools:context="com.scu.smartgrocerytracker.historygrocery.historyy">
 
 
-    <include layout="@layout/content_historyy" />
+    <!--<include layout="@layout/content_historyy" />-->
 </RelativeLayout>

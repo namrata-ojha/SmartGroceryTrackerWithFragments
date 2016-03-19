@@ -24,7 +24,8 @@
         android:layout_marginTop="54dp"
         android:layout_below="@+id/historyTitle"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -33,7 +34,8 @@
         android:id="@+id/textFruits"
         android:layout_below="@+id/textVeggie"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -42,7 +44,8 @@
         android:id="@+id/textDairy"
         android:layout_below="@+id/textFruits"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -51,7 +54,8 @@
         android:id="@+id/textUncategorised"
         android:layout_below="@+id/textDairy"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -96,7 +100,8 @@
         android:id="@+id/textView9"
         android:layout_above="@+id/amountVeggie"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp" />
 
     <Button
     style="?android:attr/buttonStyleSmall"

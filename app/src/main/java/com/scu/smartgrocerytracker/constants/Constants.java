@@ -1,5 +1,8 @@
 package com.scu.smartgrocerytracker.constants;
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
+
 public class Constants {
     //General constants
     //General constants
@@ -9,9 +12,17 @@ public class Constants {
     public static final String CATEGORY_FRUITS_NAME = "Fruits";
     public static final String CATEGORY_DAIRY_NAME = "Dairy";
 
-    //Recipe constants
+    //Settings constants
     public static final String EXPIRY_NOTIFICATION_DAYS_PROPERTY = "edu.scu.smartgrocerytracker.expiryNotificationDays";
 
+    //Pref Store Constants
+    public static final String PREF_STORE_TABLE_NAME = "preferred_store";
+    public static final String PREF_STORE_ID = "preferred_store_id";
+    public static final String PREF_STORE_NAME_COL = "store_name";
+    public static final String PREF_STORE_ADDR_COL = "store_addr";
+    public static final String PREF_STORE_PHONE_COL = "store_phnum";
+    public static final String PREF_STORE_LAT_COL = "store_lat";
+    public static final String PREF_STORE_LNG_COL = "store_long";
 
     //Database table constants
     public static final String ID_COLUMN = "_id";
@@ -76,6 +87,11 @@ public class Constants {
             Constants.SHOOPINGLIST_ITEM_ID_REFRENCE_COLUMN, Constants.SHOPPINGLIST_ITEM_IMAGE_PATH, Constants.SHOOPINGLIST_ITEM_ID_REFRENCE_COLUMN,
             Constants.ITEM_TABLE_NAME, Constants.ITEM_ID_COLUMN);
 
+
+//    * @param title the title of the note
+//    * @param body the body of the note
+//    * @return rowId or -1 if failed
+
     public static final String KEY_TITLE = "title";
     public static final String KEY_DATE = "date";
     public static final String KEY_BODY = "body";
@@ -85,4 +101,26 @@ public class Constants {
             "create table notes (_id integer primary key autoincrement, "
                     + "title text not null, body text not null, date text not null);";
 
+    //Preferred store table
+
+    public static final String PREF_STORE_TABLE_CREATE = String.format(
+            "CREATE TABLE %s (" +
+                    "  %s integer primary key autoincrement, " +
+                    "  %s text," +
+                    "  %s text," +
+                    "  %s text," +
+                    "  %s double," +
+                    "  %s double);",
+            Constants.PREF_STORE_TABLE_NAME, Constants.PREF_STORE_ID, Constants.PREF_STORE_NAME_COL,
+            Constants.PREF_STORE_ADDR_COL, Constants.PREF_STORE_PHONE_COL,
+            Constants.PREF_STORE_LAT_COL, Constants.PREF_STORE_LNG_COL);
+    public static  double Uncategorized_total = 0;
+    public static  double Vegetables_total = 0;
+    public static  double Fruits_total = 0;
+    public static  double Dairy_total=0;
+
+
 }
+
+
+

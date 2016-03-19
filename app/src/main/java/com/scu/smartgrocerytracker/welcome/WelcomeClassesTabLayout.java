@@ -34,6 +34,7 @@ public class WelcomeClassesTabLayout extends TabLayout {
         addTab(R.drawable.notes_edit, R.string.notes);
         addTab(R.drawable.maps, R.string.maps);
         addTab(R.drawable.recipe, R.string.recipe);
+        addTab(R.drawable.history, R.string.history);
         addTab(R.drawable.settings, R.string.settings);
     }
 

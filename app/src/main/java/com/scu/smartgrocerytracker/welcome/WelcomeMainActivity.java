@@ -24,15 +24,10 @@ public class WelcomeMainActivity extends FragmentActivity {
     ActionBar bar;
     boolean isExpiryNotificatonRegistered;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
 
 
         mViewPager = (ViewPager) findViewById(R.id.viewpager_main);

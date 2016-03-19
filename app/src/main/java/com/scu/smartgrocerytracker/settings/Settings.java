@@ -84,17 +84,17 @@ public class Settings extends Fragment {
             }
         });
 
-        Button buttonHistory = (Button) rootView.findViewById(R.id.buttonHistory);
-
-        buttonHistory.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View arg0) {
-                Intent myIntent = new Intent(getActivity(),historyy.class);
-                // myIntent.putExtra("key", value); //Optional parameters
-                startActivity(myIntent);
-
-            }
-        });
+//        Button buttonHistory = (Button) rootView.findViewById(R.id.buttonHistory);
+//
+//        buttonHistory.setOnClickListener(new View.OnClickListener() {
+//
+//            public void onClick(View arg0) {
+//                Intent myIntent = new Intent(getActivity(),historyy.class);
+//                // myIntent.putExtra("key", value); //Optional parameters
+//                startActivity(myIntent);
+//
+//            }
+//        });
 
         return rootView;
     }
