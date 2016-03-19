@@ -73,17 +73,17 @@ public class Settings extends Fragment {
         });
 
 
-        Button buttonMaps = (Button) rootView.findViewById(R.id.prefStoreBtn);
-
-        buttonMaps.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View arg0) {
-                Intent myIntent = new Intent(getActivity() ,PrefStoreActivity.class);
-
-                startActivity(myIntent);
-
-            }
-        });
+//        Button buttonMaps = (Button) rootView.findViewById(R.id.prefStoreBtn);
+//
+//        buttonMaps.setOnClickListener(new View.OnClickListener() {
+//
+//            public void onClick(View arg0) {
+//                Intent myIntent = new Intent(getActivity() ,PrefStoreActivity.class);
+//
+//                startActivity(myIntent);
+//
+//            }
+//        });
 
 //        Button buttonHistory = (Button) rootView.findViewById(R.id.buttonHistory);
 //

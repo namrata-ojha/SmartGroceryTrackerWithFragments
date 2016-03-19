@@ -10,6 +10,7 @@ import com.scu.smartgrocerytracker.BarcodeScanner.BarcodeFragment;
 import com.scu.smartgrocerytracker.Notes.NoteList;
 import com.scu.smartgrocerytracker.categories.CategoryListingFragment;
 import com.scu.smartgrocerytracker.historygrocery.historyy;
+import com.scu.smartgrocerytracker.location.PrefStoreActivity;
 import com.scu.smartgrocerytracker.pantry.PantryListingFragment;
 import com.scu.smartgrocerytracker.recipe.Recipe;
 import com.scu.smartgrocerytracker.settings.Settings;
@@ -29,6 +30,7 @@ public class WelcomeTabAdapter extends FragmentStatePagerAdapter {
     private Fragment notesTaking;
     private Fragment recipe ;
     private Fragment history ;
+    private Fragment prefStore;
 
     public WelcomeTabAdapter(FragmentManager fm,Context context) {
         super(fm);
@@ -63,8 +65,8 @@ public class WelcomeTabAdapter extends FragmentStatePagerAdapter {
                 notesTaking=new NoteList();
                 return notesTaking;
             case 6:
-                settingFragment=new Settings();
-                return settingFragment;
+                prefStore=new PrefStoreActivity();
+                return prefStore;
             case 7:
                 recipe=new Recipe();
                 return recipe;
