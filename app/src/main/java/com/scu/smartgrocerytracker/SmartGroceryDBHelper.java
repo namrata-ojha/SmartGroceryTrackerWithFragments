@@ -256,10 +256,17 @@ public void insertPrefStore(Place place) {
             place.name = storeName;
             place.formatted_address = storeAddr;
             place.formatted_phone_number = storePhoneNum;
-            place.geometry.location.lat = lat;
-            place.geometry.location.lng = lng;
+
+            Place.Location location = new Place.Location();
+            location.lat = lat;
+            location.lng = lng;
+
+            Place.Geometry geometry = new Place.Geometry();
+            geometry.location = location;
+            place.geometry = geometry;
+
             places.add(place);
-                    }
+        }
         return places;
 
     }

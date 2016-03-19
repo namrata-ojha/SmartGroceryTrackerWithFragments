@@ -16,6 +16,7 @@ import com.scu.smartgrocerytracker.R;
 import com.scu.smartgrocerytracker.historygrocery.historyy;
 import com.scu.smartgrocerytracker.SmartGroceryDBHelper;
 import com.scu.smartgrocerytracker.items.Items;
+import com.scu.smartgrocerytracker.location.PrefStoreActivity;
 
 
 import org.apache.commons.lang3.StringUtils;
@@ -72,13 +73,13 @@ public class Settings extends Fragment {
         });
 
 
-        Button buttonMaps = (Button) rootView.findViewById(R.id.buttonMaps);
+        Button buttonMaps = (Button) rootView.findViewById(R.id.prefStoreBtn);
 
         buttonMaps.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View arg0) {
-                Intent myIntent = new Intent(getActivity() ,MapView.class);
-                // myIntent.putExtra("key", value); //Optional parameters
+                Intent myIntent = new Intent(getActivity() ,PrefStoreActivity.class);
+
                 startActivity(myIntent);
 
             }

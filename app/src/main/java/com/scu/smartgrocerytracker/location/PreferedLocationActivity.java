@@ -26,8 +26,8 @@ import com.scu.smartgrocerytracker.R;
 
 public class PreferedLocationActivity extends Activity {
 
-    private double latitude = 40.7463956;
-    private double longitude = -73.9852992;
+double lat =37.368832;
+        double lng =-122.036346;
 
     // flag for Internet connection status
     Boolean isInternetPresent = false;
@@ -35,10 +35,7 @@ public class PreferedLocationActivity extends Activity {
     // Connection detector class
     InternetConnectionDetector cd;
 
-    // Alert Dialog Manager
-   // AlertDialogManager alert = new AlertDialogManager();
-
-    // Google Places
+     // Google Places
     GooglePlaces googlePlaces;
 
     // Places List
@@ -86,8 +83,8 @@ public class PreferedLocationActivity extends Activity {
 
         // check if GPS location can get
         if (gps.canGetLocation()) {
-          //  Log.d("Your Location", "latitude:" + gps.getLatitude() + ", longitude: " + gps.getLongitude());
-            Log.d("Your Location", "latitude:" + latitude + ", longitude: " + longitude);
+           Log.d("Your Location", "latitude:" + gps.getLatitude() + ", longitude: " + gps.getLongitude());
+         //  Log.d("Your Location", "latitude:" + lat + ", longitude: " + lng);
         } else {
             // Can't get user's current location
             Toast.makeText(PreferedLocationActivity.this, "Couldn't get location information. Please enable GPS", Toast.LENGTH_SHORT).show();
@@ -104,26 +101,6 @@ public class PreferedLocationActivity extends Activity {
         // calling background Async task to load Google Places
         // After getting places from Google all the data is shown in listview
         new LoadPlaces().execute();
-
-      /*  *//** Button click event for shown on map *//*
-        btnShowOnMap.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-                Intent i = new Intent(getApplicationContext(),
-                        PlacesMapActivity.class);
-                // Sending user current geo location
-                i.putExtra("user_latitude", Double.toString(gps.getLatitude()));
-                i.putExtra("user_longitude", Double.toString(gps.getLongitude()));
-
-                // passing near places to map activity
-                i.putExtra("near_places", nearPlaces);
-                // staring activity
-                startActivity(i);
-            }
-        });*/
-
-
         /**
          * ListItem click event
          * On selecting a listitem SinglePlaceActivity is launched
@@ -178,14 +155,22 @@ public class PreferedLocationActivity extends Activity {
                 // If you want all types places make it as null
                 // Check list of types supported by google
                 //
-                String types = "cafe|restaurant"; // Listing places only cafes, restaurants
+                String types = "grocery_or_supermarket"; // Listing places only cafes, restaurants
 
                 // Radius in meters - increase this value if you don't find any places
-                double radius = 1000; // 1000 meters
+                Bundle bundle = getIntent().getExtras();
+                String miles = null;
+                if(bundle.getString("Miles") !=null ) {
+                   miles  = bundle.getString("Miles");
+                }
+                double milesInDouble = Double.parseDouble(miles);
+                double radius = milesInDouble/0.00062137;
+                Log.i("radius",radius+"");
 
                 // get nearest places
-             //   nearPlaces = googlePlaces.search(gps.getLatitude(),gps.getLongitude(), radius, types);
-                nearPlaces = googlePlaces.search(latitude,longitude, radius, types);
+               nearPlaces = googlePlaces.search(gps.getLatitude(),gps.getLongitude(), radius, types);
+
+             //   nearPlaces = googlePlaces.search(lat,lng, radius, types);
 
 
             } catch (Exception e) {
@@ -202,7 +187,10 @@ public class PreferedLocationActivity extends Activity {
          * **/
         protected void onPostExecute(String file_url) {
             // dismiss the dialog after getting all products
-            pDialog.dismiss();
+            if(pDialog != null && pDialog.isShowing()){
+                pDialog.dismiss();
+            }
+
             // updating UI from Background Thread
             runOnUiThread(new Runnable() {
                 public void run() {

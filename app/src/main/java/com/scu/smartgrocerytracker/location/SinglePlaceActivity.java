@@ -60,35 +60,16 @@ public class SinglePlaceActivity extends Activity {
         new LoadSinglePlaceDetails().execute(reference);
 
         dbHelper = SmartGroceryDBHelper.getInstance(getApplicationContext());
-        Button save = (Button) findViewById(R.id.savebutton);
+        Button save = (Button) findViewById(R.id.savePrefStore);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dbHelper.insertPrefStore(placeDetails.result);
+                Toast.makeText(SinglePlaceActivity.this, "Saved successfully", Toast.LENGTH_SHORT).show();
+                finish();
 
             }
         });
-
-        Button view = (Button) findViewById(R.id.viewPrefStores);
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TextView lbl_name = (TextView) findViewById(R.id.dispStoreName);
-                TextView lbl_address = (TextView) findViewById(R.id.dispStoreAddr);
-                TextView lbl_phone = (TextView) findViewById(R.id.dispStorePhnum);
-                TextView lbl_lat = (TextView) findViewById(R.id.dispStoreLat);
-                TextView lbl_lng = (TextView) findViewById(R.id.dispStoreLng);
-                List<Place> places = dbHelper.getAllPreferredStores();
-                for(Place place:places) {
-                    lbl_name.setText(place.name);
-                    lbl_address.setText(place.formatted_address);
-                    lbl_phone.setText(place.formatted_phone_number);
-                    lbl_lat.setText(place.geometry.location.lat+" ");
-                    lbl_lng.setText(place.geometry.location.lng+" ");
-                }
-            }
-        });
-
     }
 
 
@@ -103,11 +84,11 @@ public class SinglePlaceActivity extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(SinglePlaceActivity.this);
+            /*pDialog = new ProgressDialog(SinglePlaceActivity.this);
             pDialog.setMessage("Loading profile ...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(false);
-            pDialog.show();
+            pDialog.show();*/
         }
 
         /**
@@ -133,8 +114,11 @@ public class SinglePlaceActivity extends Activity {
          * After completing background task Dismiss the progress dialog
          * **/
         protected void onPostExecute(String file_url) {
-            // dismiss the dialog after getting all products
-            pDialog.dismiss();
+            /*// dismiss the dialog after getting all products
+            if ((pDialog != null) && pDialog.isShowing()) {
+                pDialog.dismiss();
+            }*/
+
             // updating UI from Background Thread
             runOnUiThread(new Runnable() {
                 public void run() {
@@ -162,7 +146,7 @@ public class SinglePlaceActivity extends Activity {
                                 TextView lbl_name = (TextView) findViewById(R.id.name);
                                 TextView lbl_address = (TextView) findViewById(R.id.address);
                                 TextView lbl_phone = (TextView) findViewById(R.id.phone);
-                                TextView lbl_location = (TextView) findViewById(R.id.location);
+
 
                                 // Check for null data from google
                                 // Sometimes place details might missing
@@ -175,7 +159,7 @@ public class SinglePlaceActivity extends Activity {
                                 lbl_name.setText(name);
                                 lbl_address.setText(address);
                                 lbl_phone.setText(Html.fromHtml("<b>Phone:</b> " + phone));
-                                lbl_location.setText(Html.fromHtml("<b>Latitude:</b> " + latitude + ", <b>Longitude:</b> " + longitude));
+
                             }
                         }
                         else if(status.equals("ZERO_RESULTS")){
