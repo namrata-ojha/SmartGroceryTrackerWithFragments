@@ -24,7 +24,7 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         android:text="miles"
         android:id="@+id/milesTxtView"
         android:layout_below="@+id/searchPrefStoreTxtView"
@@ -60,12 +60,12 @@
 
     <EditText
         android:layout_width="50dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:id="@+id/editText"
         android:inputType="number"
 
         android:text="1"
-        android:layout_alignParentTop="true"
+        android:layout_alignTop="@+id/searchPrefStoreTxtView"
         android:layout_toLeftOf="@+id/milesTxtView"
         android:layout_toStartOf="@+id/milesTxtView" />
 
