@@ -42,7 +42,7 @@ public class Recipe extends Fragment {
 
 
 
-        mWebview .loadUrl("http://www.epicurious.com");
+        mWebview .loadUrl("http://allrecipes.com");
        // setContentView(mWebview );
 
 

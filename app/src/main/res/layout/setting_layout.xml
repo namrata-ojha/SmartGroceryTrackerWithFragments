@@ -51,12 +51,12 @@
         android:layout_margin="5dp"
         android:text="Maps"
         android:layout_weight="0.18" />
-    <Button
-        android:id="@+id/buttonHistory"
-        android:layout_width="186dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="5dp"
-        android:text="History"
-        android:layout_weight="0.18" />
+    <!--<Button-->
+        <!--android:id="@+id/buttonHistory"-->
+        <!--android:layout_width="186dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:layout_margin="5dp"-->
+        <!--android:text="History"-->
+        <!--android:layout_weight="0.18" />-->
 </LinearLayout>

@@ -44,6 +44,10 @@ public class Place implements Serializable {
     {
         @Key
         public Location location;
+
+        public Location getLocation() {
+            return location;
+        }
     }
 
     public static class Location implements Serializable
@@ -53,7 +57,22 @@ public class Place implements Serializable {
 
         @Key
         public double lng;
+
+        public double getLat() {
+            return lat;
+        }
+
+        public double getLng() {
+            return lng;
+        }
     }
 
+    public Geometry getGeometry() {
+        return geometry;
+    }
+
+    public String getFormatted_address() {
+        return formatted_address;
+    }
 }
 
