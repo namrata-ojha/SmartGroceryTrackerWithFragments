@@ -76,7 +76,7 @@ Here's a walkthrough of implemented user stories:
 [Video Walkthrough](https://www.youtube.com/watch?v=pezBkRJ9WGY&t=41s)
 
 
-Referenceshttp://
-developer.android.com/reference/android/support/design/widget/TabLayout.html
+References
+http://developer.android.com/reference/android/support/design/widget/TabLayout.html
 http://developer.android.com/guide/topics/search/searchdialog.
 html
